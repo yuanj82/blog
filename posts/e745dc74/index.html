@@ -1,0 +1,283 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer"><meta name=author content="YuanJ2003"><meta name=description content="我们通常在进行基因家族鉴定时，需要使用 hmmer 来搜索某一基因的同源基因，尤其是具有相同结构域并且同源程度足够高的基因，我们会将其暂且定为一个基因家族，但 hmmer 安装、hmmbuild、hmmsearch 这些步骤通常是很简单的，但有些时候又会比较繁琐，加之后面需要筛选基因，收集蛋白质序列，这个过程不易消耗太多时间，于是乎，我写了一个项目，借用 Gitlab runner or Github Action 自动化查找同源基因并提取 ID 与蛋白质序列
+极狐 Gitlab 仓库地址：https://jihulab.com/YuanJ2003/auto-hmmer
+GitHub 仓库地址：https://github.com/YuanJ2003/auto-hmmer
+概述 该项目主要是通过 CI/CD 功能，拉取 Ubuntu 镜像，并且安装所需的软件，执行对应的 Python 程序，实现自动化，只需要在input.py中输入 pfam 网站上的 PF 编号、阈值范围和物种即可，仓库中我只存放了水稻、拟南芥和玉米的蛋白质序列，其他物种的序列，自行上传后更改input.py中的物种变量即可
+Python 程序 五个 Python 程序分别执行不同的功能、通常上一程序执行完毕才能顺利执行下一个程序
+input.py PF_number = &#34;PF00031&#34; evaluation_threshold = &#34;1e-5&#34; species = &#34;Oryza_sativa&#34; ## The repository only contains the genome protein sequences of three species: Arabidopsis_thaliana , Oryza_sativa , and Zea_mays 这里是定义全局变量，将其整合在一个文件中，便于输入
+data_preparation.py import requests import input hmm = &#34;http://pfam-legacy."><meta property="og:title" content="借用 CI/CD 自动化鉴定基因家族"><meta property="og:description" content="我们通常在进行基因家族鉴定时，需要使用 hmmer 来搜索某一基因的同源基因，尤其是具有相同结构域并且同源程度足够高的基因，我们会将其暂且定为一个基因家族，但 hmmer 安装、hmmbuild、hmmsearch 这些步骤通常是很简单的，但有些时候又会比较繁琐，加之后面需要筛选基因，收集蛋白质序列，这个过程不易消耗太多时间，于是乎，我写了一个项目，借用 Gitlab runner or Github Action 自动化查找同源基因并提取 ID 与蛋白质序列
+极狐 Gitlab 仓库地址：https://jihulab.com/YuanJ2003/auto-hmmer
+GitHub 仓库地址：https://github.com/YuanJ2003/auto-hmmer
+概述 该项目主要是通过 CI/CD 功能，拉取 Ubuntu 镜像，并且安装所需的软件，执行对应的 Python 程序，实现自动化，只需要在input.py中输入 pfam 网站上的 PF 编号、阈值范围和物种即可，仓库中我只存放了水稻、拟南芥和玉米的蛋白质序列，其他物种的序列，自行上传后更改input.py中的物种变量即可
+Python 程序 五个 Python 程序分别执行不同的功能、通常上一程序执行完毕才能顺利执行下一个程序
+input.py PF_number = &#34;PF00031&#34; evaluation_threshold = &#34;1e-5&#34; species = &#34;Oryza_sativa&#34; ## The repository only contains the genome protein sequences of three species: Arabidopsis_thaliana , Oryza_sativa , and Zea_mays 这里是定义全局变量，将其整合在一个文件中，便于输入
+data_preparation.py import requests import input hmm = &#34;http://pfam-legacy."><meta property="og:type" content="article"><meta property="og:url" content="https://hieroglyphs.top/posts/e745dc74/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-07-22T23:39:07+00:00"><meta property="article:modified_time" content="2023-07-22T23:39:07+00:00"><title>借用 CI/CD 自动化鉴定基因家族</title><script async src=https://umami.hieroglyphs.top/script.js data-website-id=cf96efab-d906-4a39-a530-8270487e2e4d></script>
+<link rel=canonical href=https://hieroglyphs.top/posts/e745dc74/><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500"><link rel=stylesheet href="https://hieroglyphs.top/css/reset.css?t=2023-10-04%2002%3a58%3a40.839797684%20%2b0000%20UTC%20m%3d%2b0.145027713"><link rel=stylesheet href="https://hieroglyphs.top/css/pygments.css?t=2023-10-04%2002%3a58%3a40.839797684%20%2b0000%20UTC%20m%3d%2b0.145027713"><link rel=stylesheet href="https://hieroglyphs.top/css/main.css?t=2023-10-04%2002%3a58%3a40.839797684%20%2b0000%20UTC%20m%3d%2b0.145027713"><link rel=stylesheet href="?t=2023-10-04%2002%3a58%3a40.839797684%20%2b0000%20UTC%20m%3d%2b0.145027713"><link rel="shortcut icon" href=https://hieroglyphs.top/images/favicon.ico></head><body lang=en><section class=header><div class=container><div class=content><a href=https://hieroglyphs.top/><div class=name>YuanJ2003</div></a><h3 class=self-intro>Undergraduate | HJLab@CDUT | Sichuan</h3><nav><ul><li class=nav-posts><a href=https://hieroglyphs.top/posts/><span>Posts</span></a></li><li class=nav-diary><a href=https://hieroglyphs.top/diary/><span>Diary</span></a></li><li class=nav-about><a href=https://hieroglyphs.top/about/><span>About</span></a></li><li class=nav-gestbook><a href=https://hieroglyphs.top/gestbook/><span>Gestbook</span></a></li><li class=nav-links><a href=https://hieroglyphs.top/links/><span>Links</span></a></li></ul></nav></div></div></section><section class=icons><div class=container><div class=content><a href=//github.com/YuanJ2003 target=_blank rel=noopener><img class=icon src=https://hieroglyphs.top/icons/github.svg alt=github></a>
+<a href=https://hieroglyphs.top/images/email.png target=_blank rel=noopener><img class=icon src=https://hieroglyphs.top/icons/email.svg alt=email></a>
+<a href=https://hieroglyphs.top/images/wechat.jpg><img class=icon src=https://hieroglyphs.top/icons/wechat.svg alt=wechat></a>
+<a href="//space.bilibili.com/1692277850?spm_id_from=333.1007.0.0"><img class=icon src=https://hieroglyphs.top/icons/bilibili.svg alt=bilibili></a>
+<a href=https://hieroglyphs.top/index.xml><img class=icon src=https://hieroglyphs.top/icons/rss.svg alt=rss></a></div></div></section><section class="main post non-narrow zero-top-spacing"><div class=container><div class=content><div class=front-matter><div class=title-container><div class=page-heading>借用 CI/CD 自动化鉴定基因家族</div><div class=initials><a href=https://hieroglyphs.top>ad</a></div></div><div class=meta><div class=date title='Sat Jul 22 2023 23:39:07 UTC'>Jul 22, 2023</div></div></div><div class=markdown><blockquote><p>我们通常在进行基因家族鉴定时，需要使用 hmmer 来搜索某一基因的同源基因，尤其是具有相同结构域并且同源程度足够高的基因，我们会将其暂且定为一个基因家族，但 hmmer 安装、hmmbuild、hmmsearch 这些步骤通常是很简单的，但有些时候又会比较繁琐，加之后面需要筛选基因，收集蛋白质序列，这个过程不易消耗太多时间，于是乎，我写了一个项目，借用 Gitlab runner or Github Action 自动化查找同源基因并提取 ID 与蛋白质序列</p></blockquote><p>极狐 Gitlab 仓库地址：https://jihulab.com/YuanJ2003/auto-hmmer</p><p>GitHub 仓库地址：https://github.com/YuanJ2003/auto-hmmer</p><h2 id=概述>概述</h2><p>该项目主要是通过 CI/CD 功能，拉取 Ubuntu 镜像，并且安装所需的软件，执行对应的 Python 程序，实现自动化，只需要在<code>input.py</code>中输入 pfam 网站上的 PF 编号、阈值范围和物种即可，仓库中我只存放了水稻、拟南芥和玉米的蛋白质序列，其他物种的序列，自行上传后更改<code>input.py</code>中的物种变量即可</p><h2 id=python-程序>Python 程序</h2><p>五个 Python 程序分别执行不同的功能、通常上一程序执行完毕才能顺利执行下一个程序</p><h3 id=inputpy>input.py</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>PF_number</span> <span class=o>=</span> <span class=s2>&#34;PF00031&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>evaluation_threshold</span> <span class=o>=</span> <span class=s2>&#34;1e-5&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>species</span> <span class=o>=</span> <span class=s2>&#34;Oryza_sativa&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## The repository only contains the genome protein sequences of three species: Arabidopsis_thaliana , Oryza_sativa , and Zea_mays</span>
+</span></span></code></pre></div><p>这里是定义全局变量，将其整合在一个文件中，便于输入</p><h3 id=data_preparationpy>data_preparation.py</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>input</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm</span> <span class=o>=</span> <span class=s2>&#34;http://pfam-legacy.xfam.org/family/</span><span class=si>{}</span><span class=s2>/hmm&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=nb>input</span><span class=o>.</span><span class=n>PF_number</span><span class=p>)</span>  <span class=c1>## 文件的 URL 地址</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm_content</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>hmm</span><span class=p>)</span>  <span class=c1>## 发送 GET 请求获取文件内容</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm_content</span> <span class=o>=</span> <span class=n>hmm_content</span><span class=o>.</span><span class=n>text</span>  <span class=c1>## 获取文件的文本内容</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm_file</span> <span class=o>=</span> <span class=nb>open</span><span class=p>(</span><span class=s2>&#34;build.hmm&#34;</span><span class=p>,</span> <span class=s2>&#34;w&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm_file</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>hmm_content</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hmm_file</span><span class=o>.</span><span class=n>close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed</span> <span class=o>=</span> <span class=s2>&#34;http://pfam-legacy.xfam.org/family/</span><span class=si>{}</span><span class=s2>/alignment/seed/format?format=stockholm&amp;alnType=seed&amp;order=t&amp;case=l&amp;gaps=default&amp;download=1&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=nb>input</span><span class=o>.</span><span class=n>PF_number</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed_content</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>PFseed</span><span class=p>)</span>  <span class=c1>## 发送 GET 请求获取文件内容</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed_content</span> <span class=o>=</span> <span class=n>PFseed_content</span><span class=o>.</span><span class=n>text</span>  <span class=c1>## 获取文件的文本内容</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed_file</span> <span class=o>=</span> <span class=nb>open</span><span class=p>(</span><span class=s2>&#34;PFseed.txt&#34;</span><span class=p>,</span> <span class=s2>&#34;w&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed_file</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>PFseed_content</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>PFseed_file</span><span class=o>.</span><span class=n>close</span><span class=p>()</span>
+</span></span></code></pre></div><p>这里是通过调用 requests 库来下载因隐马尔可夫模型文件和 Stockholm file，为 hmmer 建立模型、搜索基因做准备</p><h3 id=hmmerpy>hmmer.py</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>subprocess</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>input</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>run_command</span><span class=p>(</span><span class=n>command</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>process</span> <span class=o>=</span> <span class=n>subprocess</span><span class=o>.</span><span class=n>Popen</span><span class=p>(</span><span class=n>command</span><span class=p>,</span> <span class=n>stdout</span><span class=o>=</span><span class=n>subprocess</span><span class=o>.</span><span class=n>PIPE</span><span class=p>,</span> <span class=n>shell</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>    <span class=n>output</span><span class=p>,</span> <span class=n>error</span> <span class=o>=</span> <span class=n>process</span><span class=o>.</span><span class=n>communicate</span><span class=p>()</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>process</span><span class=o>.</span><span class=n>returncode</span> <span class=o>!=</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;Error occurred: </span><span class=si>{</span><span class=n>error</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;Success!</span><span class=se>\n</span><span class=si>{</span><span class=n>output</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## 创建你的命令</span>
+</span></span><span class=line><span class=cl><span class=n>hmmbuild_command</span> <span class=o>=</span> <span class=s1>&#39;hmmbuild build.hmm PFseed.txt&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>hmmsearch_command</span> <span class=o>=</span> <span class=s1>&#39;hmmsearch build.hmm ./protein_sequence/</span><span class=si>{}</span><span class=s1>.fasta &gt; result.out&#39;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=nb>input</span><span class=o>.</span><span class=n>species</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## 运行你的命令</span>
+</span></span><span class=line><span class=cl><span class=n>run_command</span><span class=p>(</span><span class=n>hmmbuild_command</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>run_command</span><span class=p>(</span><span class=n>hmmsearch_command</span><span class=p>)</span>
+</span></span></code></pre></div><p>这个程序通过调用 subprocess 库来执行系统命令，使用 hmmer，在此执行此程序之前，已经自动安装好 hmmer 并加入到环境变量中，可以在这个文件中自定义 hmmer 命令</p><h3 id=extract_idpy>extract_id.py</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>re</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>input</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>file_path</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>expanduser</span><span class=p>(</span><span class=s1>&#39;./result.out&#39;</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>output_path</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>expanduser</span><span class=p>(</span><span class=s1>&#39;./id_list.txt&#39;</span><span class=p>)</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>file_path</span><span class=p>,</span> <span class=s1>&#39;r&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>file</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>data</span> <span class=o>=</span> <span class=n>file</span><span class=o>.</span><span class=n>readlines</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Pattern to match evalue anywhere in the string</span>
+</span></span><span class=line><span class=cl><span class=n>pattern</span> <span class=o>=</span> <span class=n>re</span><span class=o>.</span><span class=n>compile</span><span class=p>(</span><span class=s1>&#39;\d+e-[0-9]</span><span class=si>{2}</span><span class=s1>&#39;</span><span class=p>,</span> <span class=n>re</span><span class=o>.</span><span class=n>IGNORECASE</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>process_data</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Prepare the output file</span>
+</span></span><span class=line><span class=cl><span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>output_path</span><span class=p>,</span> <span class=s1>&#39;w&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>out_file</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>line</span> <span class=ow>in</span> <span class=n>data</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=s1>&#39;------ inclusion threshold ------&#39;</span> <span class=ow>in</span> <span class=n>line</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>process_data</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>process_data</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>match</span> <span class=o>=</span> <span class=n>pattern</span><span class=o>.</span><span class=n>search</span><span class=p>(</span><span class=n>line</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=k>match</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>e_value</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=k>match</span><span class=o>.</span><span class=n>group</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=n>e_value</span> <span class=o>&lt;</span> <span class=nb>float</span><span class=p>(</span><span class=nb>input</span><span class=o>.</span><span class=n>evaluation_threshold</span><span class=p>)</span> <span class=p>:</span>
+</span></span><span class=line><span class=cl>                    <span class=n>parts</span> <span class=o>=</span> <span class=n>line</span><span class=o>.</span><span class=n>split</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                    <span class=n>out_file</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>parts</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=s1>&#39;</span><span class=se>\n</span><span class=s1>&#39;</span><span class=p>)</span>  <span class=c1>## Write Sequence gene id to file</span>
+</span></span></code></pre></div><p>这个程序将从 hmmsearch 的结果文件<code>result.out</code>中筛选出符合我们设定的阈值的基因 ID，写入<code>id_list.txt</code></p><h3 id=extract_sequencepy>extract_sequence.py</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>Bio</span> <span class=kn>import</span> <span class=n>SeqIO</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>input</span> <span class=kn>import</span> <span class=n>species</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>extract_sequences</span><span class=p>(</span><span class=n>id_list</span><span class=p>,</span> <span class=n>fasta_file</span><span class=p>,</span> <span class=n>out_file</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>id_list</span><span class=p>,</span> <span class=s1>&#39;r&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>id_handle</span><span class=p>,</span> <span class=nb>open</span><span class=p>(</span><span class=n>out_file</span><span class=p>,</span> <span class=s1>&#39;w&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>out_handle</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>ids</span> <span class=o>=</span> <span class=p>[</span><span class=n>line</span><span class=o>.</span><span class=n>strip</span><span class=p>()</span> <span class=k>for</span> <span class=n>line</span> <span class=ow>in</span> <span class=n>id_handle</span><span class=o>.</span><span class=n>readlines</span><span class=p>()]</span>
+</span></span><span class=line><span class=cl>        <span class=n>fasta_sequences</span> <span class=o>=</span> <span class=n>SeqIO</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=nb>open</span><span class=p>(</span><span class=n>fasta_file</span><span class=p>),</span><span class=s1>&#39;fasta&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>fasta</span> <span class=ow>in</span> <span class=n>fasta_sequences</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>name</span><span class=p>,</span> <span class=n>sequence</span> <span class=o>=</span> <span class=n>fasta</span><span class=o>.</span><span class=n>id</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>fasta</span><span class=o>.</span><span class=n>seq</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=n>name</span> <span class=ow>in</span> <span class=n>ids</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>SeqIO</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>fasta</span><span class=p>,</span> <span class=n>out_handle</span><span class=p>,</span> <span class=s1>&#39;fasta&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>extract_sequences</span><span class=p>(</span><span class=s1>&#39;id_list.txt&#39;</span><span class=p>,</span> <span class=s2>&#34;./protein_sequence/</span><span class=si>{}</span><span class=s2>.fasta&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=n>species</span><span class=p>),</span> <span class=s1>&#39;protein_for_target_id.fasta&#39;</span><span class=p>)</span>
+</span></span></code></pre></div><p>这个程序将从蛋白质序列文件中提取出上一步筛选出的 ID 的蛋白质序列，使用了 biopython 库，将提取的序列写入<code>protein_for_target_id.fasta</code></p><h2 id=流水线配置>流水线配置</h2><h3 id=gitlab-ciyml>.gitlab-ci.yml</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=line><span class=cl><span class=nt>default</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>image</span><span class=p>:</span><span class=w>  </span><span class=l>ubuntu:latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>stages</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>hmmer_search</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>extract_id</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>- <span class=l>extract_sequence</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>hmmer_search</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>stage</span><span class=p>:</span><span class=w> </span><span class=l>hmmer_search</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>before_script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>sed -i &#39;s@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g&#39; /etc/apt/sources.list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>apt-get update &amp;&amp; apt-get install -y build-essential gcc python3 python3-pip</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>pip install requests -i https://mirrors.aliyun.com/pypi/simple/</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>tar -xvf hmmer.tar.gz</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>cd hmmer-3.3.2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>./configure</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>make</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>make install</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>export PATH=&#34;$PATH:~/hmmer-3.3.2/bin&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>cd ..</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>python3 data_preparation.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>python3 hmmer.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>artifacts</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>paths</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>build.hmm</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>PFseed.txt</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>result.out</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>only</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>extract_id</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>stage</span><span class=p>:</span><span class=w> </span><span class=l>extract_id</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>before_script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>sed -i &#39;s@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g&#39; /etc/apt/sources.list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>apt-get update &amp;&amp; apt-get install python3 -y</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>chmod +x extract_id.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>python3 extract_id.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>artifacts</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>paths</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>id_list.txt</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>only</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>extract_sequence</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>stage</span><span class=p>:</span><span class=w> </span><span class=l>extract_sequence</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>before_script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>sed -i &#39;s@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g&#39; /etc/apt/sources.list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>apt-get update &amp;&amp; apt-get install python3-pip -y</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>pip install biopython -i https://mirrors.aliyun.com/pypi/simple/</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>chmod +x extract_sequence.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>python3 extract_sequence.py</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>artifacts</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>paths</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>protein_for_target_id.fasta</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>only</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=l>main</span><span class=w>
+</span></span></span></code></pre></div><p>这是 Gitlab CI/CD 的配置文件，分为 hmmer 搜索、ID 提取、序列提取三个步骤，并上传每个步骤的结果作为产物</p><h3 id=githubworkflowsauto-hmmeryml>.github/workflows/auto-hmmer.yml</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=line><span class=cl><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>CI</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>push</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>hmmer_search</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Set up Python 3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/setup-python@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>python-version</span><span class=p>:</span><span class=w> </span><span class=m>3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Install dependencies</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo apt-get update &amp;&amp; sudo apt-get install -y build-essential gcc python3 python3-pip
+</span></span></span><span class=line><span class=cl><span class=sd>          pip install requests
+</span></span></span><span class=line><span class=cl><span class=sd>          tar -xvf hmmer.tar.gz
+</span></span></span><span class=line><span class=cl><span class=sd>          cd hmmer-3.3.2
+</span></span></span><span class=line><span class=cl><span class=sd>          ./configure
+</span></span></span><span class=line><span class=cl><span class=sd>          make
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo make install
+</span></span></span><span class=line><span class=cl><span class=sd>          export PATH=&#34;$PATH:~/hmmer-3.3.2/bin&#34;
+</span></span></span><span class=line><span class=cl><span class=sd>          cd ..</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run scripts</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          python3 data_preparation.py
+</span></span></span><span class=line><span class=cl><span class=sd>          python3 hmmer.py</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Upload artifact</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/upload-artifact@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>hmmer-out</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>path</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>            build.hmm
+</span></span></span><span class=line><span class=cl><span class=sd>            PFseed.txt
+</span></span></span><span class=line><span class=cl><span class=sd>            result.out</span><span class=w>            
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>extract_id</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>needs</span><span class=p>:</span><span class=w> </span><span class=l>hmmer_search</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Download result.out</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/download-artifact@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>hmmer-out</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>path</span><span class=p>:</span><span class=w> </span><span class=l>./</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Set up Python 3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/setup-python@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>python-version</span><span class=p>:</span><span class=w> </span><span class=m>3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Install dependencies</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo apt-get update &amp;&amp; sudo apt-get install python3 -y</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run scripts</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo chmod +x extract_id.py
+</span></span></span><span class=line><span class=cl><span class=sd>          python3 extract_id.py</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Upload artifact</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/upload-artifact@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>id-list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>path</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>            id_list.txt</span><span class=w>            
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>extract_sequence</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>needs</span><span class=p>:</span><span class=w> </span><span class=l>extract_id</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Download id_list.txt</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/download-artifact@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>id-list</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>path</span><span class=p>:</span><span class=w> </span><span class=l>./</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Set up Python 3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/setup-python@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>python-version</span><span class=p>:</span><span class=w> </span><span class=m>3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Install dependencies</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo apt-get update &amp;&amp; sudo apt-get install python3-pip -y
+</span></span></span><span class=line><span class=cl><span class=sd>          pip install biopython</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run scripts</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>          sudo chmod +x extract_sequence.py
+</span></span></span><span class=line><span class=cl><span class=sd>          python3 extract_sequence.py</span><span class=w>          
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Upload artifact</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/upload-artifact@v2</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>sequence-data</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>path</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>            protein_for_target_id.fasta</span><span class=w>            
+</span></span></span></code></pre></div><p>这是 GitHub Action 的配置文件，也分为 hmmer 搜索、ID 提取、序列提取三个步骤，并上传每个步骤的结果作为产物</p><h2 id=使用>使用</h2><p>直接 fork 我的仓库，极狐 Gitlab/GitHub 的都一样，当然，极狐 Gitlab 的仓库也同样适用于全球版 Gitlab 与自托管的 Gitlab，前提是你要有使用 Gitlab runner 的权限</p><p>修改<code>input.py</code>中的三个变量即可</p><p>如果需要更多物种，上传蛋白质序列到 protein_sequence 文件夹，并且修改<code>input.py</code>中的物种变量即可，需要注意的是，变量的内容需要与蛋白质序列文件名称相同，但不包含后缀名</p><p>运行的结果与输出文件，下载对应流水线步骤的产物即可</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/20230723000504.png alt></p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/20230723000524.png alt></p><br><p class=back-to-posts><a href=https://hieroglyphs.top/posts>Back to posts</a></p></div><br></div></div></section><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js></script>
+<script type=text/javascript>hljs.initHighlightingOnLoad()</script><script type=text/javascript async src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["[[","]]"]],processEscapes:!0,processEnvironments:!0,skipTags:["script","noscript","style","textarea","pre"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["AMSmath.js","AMSsymbols.js"]}}}),MathJax.Hub.Queue(function(){var e,t=MathJax.Hub.getAllJax();for(e=0;e<t.length;e+=1)t[e].SourceElement().parentNode.className+=" has-jax"})</script><style>code.has-jax{font:inherit;font-size:100%;background:inherit;border:inherit;color:#515151}</style></body></html>
