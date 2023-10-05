@@ -349,75 +349,16 @@ HMMER HMMER 是基于隐马尔可夫模型，用于生物序列分析工作的�
 最终得到可视化结果</description></item><item><title>About</title><link>https://yuanj.top/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/about/</guid><description>Hello 👋 I’m YuanJiao. I come from Chengdu University of Technology and I am studying computer technology and bioinformatics .
 You can find me at Bilibili or WeChat Official Account and get more information.
 At the same time, I have been studying and practicing at Molecular Ecology&amp;amp;Molecular Toxicology Research Group .
-Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also connect with me on WeChat and GitHub .</description></item><item><title>Diary</title><link>https://yuanj.top/diary/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/diary/</guid><description>2023/10/04 天气阴 感觉这张图有点意思
+Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also connect with me on WeChat and GitHub .</description></item><item><title>Essay</title><link>https://yuanj.top/essay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/essay/</guid><description>2023/10/05 天气阴 那一刻，时光之河的并蒂花上，一只蝴蝶对另一只蝴蝶说：”梁兄，别来无恙？
+如果存在前生和来世，洛阳有牡丹盛开，济南有荷花凋谢，金陵的梅花飘香，北京的月季绽放，我们前生和来世的家在哪里？
+从西晋到东晋，从长安到西安，三生三世，你还在我心底。我们一直形影不离，蝶翅约定了双飞，是谁在亭子里弹琴？
+杏花纷纷，纷纷落在地上变成尘埃。从楷书到行书，从长笺到短信，万水千山，我还在你梦里。我们始终没有分别，指尖承诺了同醉，是谁在草桥边送君？
+纷纷大雪，大雪铺满归来时的道路。最初的一拜天地，也是最后的一谢天地。
+——摘自蜘蛛的 《十宗罪》
+2023/10/04 天气阴 感觉这张图有点意思
 最近 Cloudflare 更改了策略，加上国内最近似乎又在屏蔽 Cloudflare 的 DNS，手机上一直打不开博客，电脑上有时候也需要刷新几次才能打开 &amp;hellip; 只能将域名接回 DNSpod，主要的两个域名 hieroglyphs.top 和 huangjin-lab.cn 的 DNS 接回去了，其它一些无关紧要的域名还在 Cloudflare 用来绑定 Worker 和 R 存储桶等。DNS 为什么要接入到 Cloudflare？ 因为 DNSpod 归属腾讯云，腾讯云的界面是在一言难尽，还动不动要验证、登录什么的，实在无语，如果接入 DNSpod 还不行，那可能就是 Vercel 的问题，只能再换别的服务，不过我还是会把 DNS 接到 Cloudflare &amp;hellip;
 群里有些人解析到 Vercel 的域名直接没法访问了，似乎是沿海地区管控比较严格 &amp;hellip; 这确实让人有些“不知所措”。现在有些地方访问 VScode 的官网居然都跳反诈中心了 &amp;hellip;
 好吧，不是 Cloudflare 的问题，V2EX 上的网友说 Vercel 的 cname.china 也被有些运营商屏蔽了 &amp;hellip;
 询问了一下，我的域名在有些地区也是跳转到反诈中心 &amp;hellip;
 经过测试，netlify 还是正常的，于是切换过去了。
-2023/10/03 天气阴 A ∩ B = Ø
-2023/10/02 天气阴 今天本打算用 GitHub Action 来自动打包 Python ID 转换程序，但 Pyinstaller 在 Linux 下打包的程序只能在 Linux 下使用 &amp;hellip; 而 Windows 下打包的程序才能用于 Windows，我本意是想对代码做出改进和优化后 push 到仓库自动打包，那么使用的时候就直接下载最新的产物就可以了，可现实是 Python 没有支持交叉编译的跨平台的打包工具，所以 Python 想打包某个平台的可执行文件，就必须在这个平台上配置打包环境。可以用 docker，但似乎有些过于麻烦了，这只是一个几十行代码的脚本，有点本末倒置了。</description></item><item><title>Friends</title><link>https://yuanj.top/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/links/</guid><description>Recommend Ethan.Tzy 安知鱼 Fomalhaut🥝 张洪 Heo 雨临 Lewis 的博客 杜老师说 轻笑 Chuckle 小冰博客 Akilar の糖果屋 Partner Ariasaka の小窝 Black Flies CC 康纳百川 LrcShare Yang&amp;rsquo;s Harbor 又见苍岚 YuZhangWang 的领域 小哈陈陈 Add me name: Hieroglyphs link: https://hieroglyphs.top avatar: https://hieroglyphs.top/images/avatar.png descr: 世不患无才，患无用之之道 siteshot: https://hieroglyphs.top/images/siteshot.png Join me name=&amp;#34;blog&amp;#39;s name&amp;#34; url=&amp;#34;blog&amp;#39;s url&amp;#34;</description></item><item><title>Gestbook</title><link>https://yuanj.top/gestbook/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/gestbook/</guid><description>Leave a message here</description></item><item><title>Memory</title><link>https://yuanj.top/memory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/memory/</guid><description>Dawn Blossoms Plucked at Dusk 2020/01/26
-我觉得你没有忘记，那一刻，你带着笑容看着我，我盯着你看，那是我整个青春年华最美好的回忆，我感觉宇宙都是我的。但你不知道的是，你走的那天晚上我哭的多么撕心裂肺。
-2020/01/23
-你多么希望有一天突然惊醒，发现自己是在初一的一节课上睡着了，现在经历的一切都是一场梦，桌上满是你的口水。你告诉同桌，说做了一个好长好长的梦。同桌骂你白痴，叫你好好听课。你看着窗外的球场，一切都那么熟悉，一切还充满希望。——《网易云热评》
-2019/08/14
-有一个摇滚青年曾说：最单纯的喜欢就是， 就算你拒绝了我，我对你也永远没有埋怨。 但我不会再靠近了。 如果你有求于我，我依然会鞠躬尽瘁。 从今往后我会把喜欢藏起来，不再招摇过市了， 我会努力过的好，希望你也是。
-2019/08/03
-星河滚烫，烫死人间理想 人还冷漠，泼灭人间炙热 溪泉汨流，淹死人间希望 沧海桑田，熬死人间守望 皓月清凉，你是人间曙光 万物生长，你是四月朝阳 满树繁华，你是心之所向
-2019/05/04
-我多想弥补那些东西，我因未知而与你隔绝，我就想是孤魂野鬼，一个傀儡一样。最初不相识，最终不相认，你当初的行为我找不到理由，现在犹如路人。希望你更加美好。 致――高一五班 HXT （只有我经常叫你这个名字）
-2019/03/16
-那天，老师突然问了一个问题，天使和魔鬼有什么区别，我们都陷入了沉思，这时全班最沉默的那个男生突然说，天使会为了世界而负了你，魔鬼会为了你而负了整个世界。 ——网易云热评 徐秉龙《宝贝》 ​​​
-2018/06/30
-你的一生，我只送一程 不忍离别，但车已到站 你远走高飞 我原路返回 ！ 三年， 1095 天， 26280 小时，1576800 分钟，94608000 秒 看似很长， 却在转指一瞬间就匆匆而过 还记得吗？ 初三最后一课的情景是怎样的？ 这堂课里有老师反复的考前叮嘱 有同学们最后的争分夺秒 还有弥漫在每个人心中的不舍</description></item><item><title>Verbatim</title><link>https://yuanj.top/verbatim/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/verbatim/</guid><description>From now on, I won’t care for any lovely night
-十宗罪 ——蜘蛛
-那一刻，时光之河的并蒂花上，一只蝴蝶对另一只蝴蝶说：”梁兄，别来无恙？
-如果存在前生和来世，洛阳有牡丹盛开，济南有荷花凋谢，金陵的梅花飘香，北京的月季绽放，我们前生和来世的家在哪里？
-从西晋到东晋，从长安到西安，三生三世，你还在我心底。我们一直形影不离，蝶翅约定了双飞，是谁在亭子里弹琴？
-杏花纷纷，纷纷落在地上变成尘埃。从楷书到行书，从长笺到短信，万水千山，我还在你梦里。我们始终没有分别，指尖承诺了同醉，是谁在草桥边送君？
-纷纷大雪，大雪铺满归来时的道路。最初的一拜天地，也是最后的一谢天地。
-你还在我身旁 ——戴畅
-瀑布的水逆流而上，
-蒲公英种子从远处飘回，聚成伞的模样，
-太阳从西边升起，落向东方。
-子弹退回枪膛，运动员回到起跑线上，
-我交回录取通知书，忘了十年寒窗。 厨房里飘来饭菜的香，
-你把我的卷子签好名字，
-关掉电视，帮我把书包背上。
-你还在我身旁。
-鹊桥仙·纤云弄巧 ——北宋秦观
-纤云弄巧，飞星传恨，银汉迢迢暗度。金风玉露一相逢，便胜却人间无数。
-柔情似水，佳期如梦，忍顾鹊桥归路。两情若是久长时，又岂在朝朝暮暮。
-星夜集 ——宁城
-你现在所看到的星星，
-是它一亿年以前的样子，
-就好像我在银河一侧，
-对着星空说一句我爱你，
-当你听到时，
-我已爱上你无数年。
-海将军 ——惊竹娇
-少年一贯快马扬帆，
-道阻且长不转弯。
-要盛大，要绚烂，要哗然，
-要用理想的泰坦尼克，
-去撞现实冰川。
-要当烧赤壁的风，
-而非借箭草船，
-要为了一片海，就肯翻万山。
-少年 ——惊竹娇
-未必要功成名就，
-难道田野一定要丰收，
-是麦子就必须结穗低头。
-你只管向前走，
-就当别人跟在身后。
-毕竟呢，
-上天翻云覆雨的手，
-怎么压得垮，少年的舟。
-以前 ——惊竹娇
-你会不会在下一首诗里，
-想起从前的月亮，
-还是说，
-我只是你历史上，
-盛了一半的唐。
-无用诗 ——惊竹娇
-但风一直吹，雨一直下</description></item></channel></rss>
+2023/10/03 天气阴 A ∩ B = Ø</description></item></channel></rss>

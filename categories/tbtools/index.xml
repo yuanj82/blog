@@ -1,31 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TBtools on Hieroglyphs</title><link>https://yuanj.top/categories/tbtools/</link><description>Recent content in TBtools on Hieroglyphs</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 21 Aug 2023 20:02:39 +0800</lastBuildDate><atom:link href="https://yuanj.top/categories/tbtools/index.xml" rel="self" type="application/rss+xml"/><item><title>[置顶] 专题：基因家族鉴定</title><link>https://yuanj.top/posts/a4559e49/</link><pubDate>Thu, 01 Jun 2023 14:35:34 +0000</pubDate><guid>https://yuanj.top/posts/a4559e49/</guid><description>完整的基因家族鉴定流程，包含基因家族鉴定和基因家族的性质分析、基因分析、进化分析等
-本文已在 GitHub 开源，开源地址为 Gene-family-identification
-国内镜像仓库 Gene-family-identification
-可以在仓库的 exampledata 文件夹中查看示例数据
-概念 研究思路 前期准备工作 查找基因的结构域 搜索相关文献 基因组序列文件与注释文件下载 隐马尔可夫模型下载 基因家族鉴定 HMMER 查找 Blast 比对 进一步确定基因家族成员 结构域分析 Motif 分析 构建系统发育树 基因家族的性质分析 理化性质分析 染色体定位分析 基因家族成员的基因分析 内含子和外显子结构 基因表达量分析 基因家族的进化分析 互作蛋白网络 顺式作用元件分析 多序列比对 共线性分析 多图结合 基因家族的功能研究 GO 富集分析 KEGG 富集分析 总结 致谢 基因是染色体上一段可以发生转录的区域包括内含子（intron）、外显子（exon）、启动子（promoter），转录本（transcript）才是基因的研究实体。
-基因家族来源于同一个祖先，由同一个基因通过基因重复而产生两个或更多的拷贝而构成的一组基因，其在结构和功能上就有明显的相似性，编码相似的蛋白质产物，同意家族基因可以紧密排列在一起，形成一个基因簇，但多数时候，他们分散在同一染色体的不同位置，或存在于不同的染色体上，各自有不同的表达调控模式。
-序列高度相似的序列，互为同源基因（homologous gene），归属于一个基因家族。
-有时定义基因家族，从结构域角度来刻画。如：一类基因，其编码蛋白都含有同一个结构域，这一类基因是一个基因家族。这个定义信息更偏向功能信息，一般来说结构域决定某种功能，因为结构域序列保守，易形成稳定的三维结构。这与共同祖先的定义有些差别，很多结构域难找得到其共同祖先。另外一个基因的共同祖先定义比较复杂的，越是历史久远的祖先，因为物种的在进化过程中发生了很多丢失和增加事件。共同祖先是个相对的概念，比如植物的共同祖先，一般包括藻类及其它绿色植物，而被子植物共同祖先，根据已经测序的基因组，一般指单双子叶之前就可以。如果从共同祖先定义基因家族，很多已知的基因家族就要被分成很多个基因家族。有很多网站（数据库）专门收集结构域，比如 Pfam 和 InterPro，这两个数据库内容差不多。这些数据库以 Hmmer 算法为基础，根据 Uniprot 中包含的蛋白，进行序列连配找到保守的片段（结构域），再以这些序列使用 Hmmer 构建种子，保存这些种子。一个蛋白拿过来后，与这些种子比对，根据打分能判断出这个蛋白是不是含有这个结构域，这也是判断一个基因编码蛋白是不是属于这个家族。
-研究思路 关于基因家族的鉴定思路主要包括以下部分：
-基因家族成员鉴定
-确定研究的基因家族 家族成员的基本特征确定（参考已有物种） 参考序列集合的准备或下载该基因家族的隐马尔科夫模型 目标物种序列和注释信息的下载或准备 双向 Blast 比对或 HMMER Search 获取可能的成员 基于保守结构域进行进一步筛选 结合系统发育树、保守结构域和保守基序（motif）等确定最终的基因家族成员 基因家族成员的性质分析</description></item><item><title>TBtools 序列信息统计及序列操作</title><link>https://yuanj.top/posts/76asdja/</link><pubDate>Mon, 21 Aug 2023 20:02:39 +0800</pubDate><guid>https://yuanj.top/posts/76asdja/</guid><description>使用 TBtools 的 Fasta Stats 和 Sequence Manipulate 工具帮助我们迅速地统计信息及序列操作
-Fasta Stats 该工具可获取 Fasta 序列的以下信息：
-Total_Len（序列总长） Total_Seq_Num（染色体数） Total_N _Counts（未测通的碱基数） Total_LowCase_Counts（重复序列的标志） Total_GC_content（GC 含量） Minimum Len（最小序列长度） Maximum Len（最大序列长度） Mean Len（平均序列长度） Median Len（序列中位数长度） N50 打开工具，输入序列并设置输出目录即可查看信息
-输出目录下会有一个 excel 文件，显示序列长度与描述
-Sequence Manipulate 该工具可以对序列进行以下操作（可勾选多个组合使用）：
-Reverse（反向） Complement（互补） RNA（序列对应的 RNA 序列） UpperCase（大写） LowerCase（小写） Only IDs（只显示序列 ID） Only Seqs（只显示序列信息） Seq in one Line（序列显示在一行） Bases per Line（每一行的碱基数，设置需要取消勾选 [Seq in one Line]） 直接粘贴序列，选择操作选项即可</description></item><item><title>植物基因组蛋白质序列的制备</title><link>https://yuanj.top/posts/ka87as/</link><pubDate>Fri, 18 Aug 2023 17:59:26 +0800</pubDate><guid>https://yuanj.top/posts/ka87as/</guid><description>一般情况下，植物基因组 DNA 序列及注释文件可以在 ensembl 网站直接下载到，但蛋白质序列貌似不是很好下载，各处下载的序列文件格式、ID 等都有很大的不同，NCBI 上的也比较杂乱，所以还是自己翻译为好，这里依旧使用 TBtools
-数据下载 其实在 ensembl 网站 可以下载到 DNA 序列、蛋白质序列及注释文件，但蛋白质序列的 ID 格式比较乱
-我比较喜欢由 ID 直接对应序列的
-先从 ensembl 网站 下载 DNA 序列及注释文件
-打开 ensembl 网站 后，直接在首页的物种列表里选择物种，我们课题组主要做水稻，我就以水稻为例
-点击物种详情页的 Download DNA sequence 就会跳转到 DNA 序列的 ftp 页面
-以 dna.toplevel 结尾的就是基因组的全部 DNA 序列，其他的是各条染色体上的基因的 DNA 序列
-回到详情页，点击 Gene annotation 下的 GFF3 下载注释文件
-下载整个基因组的注释文件，而不是各条染色体的
-再回到详情页，点击 Gene annotation 下的 FASTA
-跳转到 ftp 页面之后我们可以看到这里有 DNA、ncrna、cDNA、CDS 及蛋白质（pep）
-打开 pep 文件夹下载所有蛋白质序列
-但这个蛋白质序列的 ID 很长，所以我们自己制备蛋白质序列</description></item><item><title>TBtools 快速完成基因功能注释</title><link>https://yuanj.top/posts/sdh623d/</link><pubDate>Tue, 15 Aug 2023 19:50:46 +0800</pubDate><guid>https://yuanj.top/posts/sdh623d/</guid><description> eggNOG-mapper 大名鼎鼎，是一款非常全面，高效，准确，且一直在更新的软件，对应的，该团队提供了网页接口，任何人可以提交蛋白序列文件，在极短的时间内（一般几分钟）完成基因功能注释，包括：具体功能描述信息、Gene Onotoloy 注释信息、KEGG 注释信息、PFAM 注释信息以及其他&amp;hellip;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TBtools on Hieroglyphs</title><link>https://yuanj.top/categories/tbtools/</link><description>Recent content in TBtools on Hieroglyphs</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 15 Aug 2023 19:50:46 +0800</lastBuildDate><atom:link href="https://yuanj.top/categories/tbtools/index.xml" rel="self" type="application/rss+xml"/><item><title>TBtools 快速完成基因功能注释</title><link>https://yuanj.top/posts/sdh623d/</link><pubDate>Tue, 15 Aug 2023 19:50:46 +0800</pubDate><guid>https://yuanj.top/posts/sdh623d/</guid><description> eggNOG-mapper 大名鼎鼎，是一款非常全面，高效，准确，且一直在更新的软件，对应的，该团队提供了网页接口，任何人可以提交蛋白序列文件，在极短的时间内（一般几分钟）完成基因功能注释，包括：具体功能描述信息、Gene Onotoloy 注释信息、KEGG 注释信息、PFAM 注释信息以及其他&amp;hellip;
 基因功能注释质量好坏取决于数据库质量高低，是否全面。于是，本地化进行基因功能注释，需要收集尽可能多的数据库（这个其实很不实际），也需要有较好的计算资源。通过使用网页服务工具，可以克服这个问题。我们可以一直使用最新最全的数据库，同时不需要消耗本地计算资源。
 eggNOG-mapper 注释 打开 eggNOG-mapper 主页 上传序列文件并输入邮箱，参数一般就使用默认即可，一般使用蛋白质序列
 随后就可以看到右键提示
@@ -37,37 +10,4 @@ eggNOG-mapper 注释 打开 eggNOG-mapper 主页 上传序列文件并输入邮�
 eggNOG-mapper Helper 接下来我们便使用 TBtools 的 eggNOG-mapper Helper 插件来整理结果
 很快就能完成，完成后就可以查看整理好的信息
 输出文件中，大家可能最关注的有四个：
-out.emapper.annotations.description.txt，对应的功能文本描述 out.emapper.annotations.GO.txt，对应的是 GO 注释结果，可直接用于 TBtools GO 富集分析，当注释背景文件 out.emapper.annotations.KEGG_Knum.txt，对应的是 KEGG 注释结果，可直接用于 TBtools KEGG 富集分析，当背景注释文件 out.emapper.annotations.pfam.domain.txt，对应的是 PFAM 结构域注释，注意，这个注释结果是定性的，即有无某结构域，如果一个序列有多个相同结构域，只会显示一个</description></item><item><title>TBtools 制作基因表达热图详解</title><link>https://yuanj.top/posts/81ccbfae/</link><pubDate>Fri, 23 Jun 2023 12:07:50 +0000</pubDate><guid>https://yuanj.top/posts/81ccbfae/</guid><description>使用 TBtools 制作基因表达热图实在是方便，美化起来也很简单，本文以水稻的一组基因为例，讲述基因表达数据的获取、处理并使用 TBtools 出图
-数据准备 基因表达量数据一般由实验得来，对于一些物种也会有相对的数据库提供各种条件下实验得来的数据，我们课题组做的大都与水稻有关，我就以水稻的为例
-RED 数据库提供了多数水稻基因在不同条件下的表达量数据，输入基因名称进行搜索，这里使用 RAP ID 或者 MUS ID 都可以，只不过貌似 RAP ID 的要全一点，很多 MUS ID 的都找不到
-搜索完成后，这里有很多的 Project，每个 Project 对应不同的实验条件，例如 DRP000391 就是正常状况下的表达量
-从 Project 的详情页的可以看到该项目的实验条件
-点击Show Data然后导出数据，这里要注意一下，导出数据是需要 flash 支持的，但 21 年开始 chrome、edge 这些浏览器已经不支持 flash 了，可以使用 360 浏览器或者搜狗浏览器这些，我提供一个绿色版的 360 浏览器便携版，解压之后打开360chrome.exe直接使用
-导出之后对数据进行处理，使用 Excel 的筛选功能，将数据整理成基因名称与各个项目的数据相对应的形式
-对数据进行 Log2 处理，报错的值一律改为 0 即可
-绘图 打开 TBtools 的 Heatmap 功能，把数据表格粘贴进去，start 出图
-美化 默认的图颜色并不是很美观，我们可以对它进行调整点击 Show Control Dialog 打开控制面板，具体的参数注释如下
-一般就是先对其进行聚类，然后调整颜色，我个人一般把 0.00 作为分界线改为白色，图形改为圆形，将上下限改为一样的数值，那么中心值自然就是 0.00 了</description></item><item><title>物种内共线性分析</title><link>https://yuanj.top/posts/f44e9fb8/</link><pubDate>Mon, 24 Apr 2023 17:26:51 +0000</pubDate><guid>https://yuanj.top/posts/f44e9fb8/</guid><description>概念 共线性是指同源基因在物种内或者物种之间的分布或排列关系。我们都知道，有相当多的基因在一个物种中不是以单拷贝的形式出现，而是多拷贝，具有基因序列重复事件，也就是说能行使相同功能的同源基因在同一个物种内可能不只有一条序列，而当我们想研究这些同源基因在同一个物种内的重复事件的时候，就是物种内的共线性分析。如果我们研究同源基因在不同物种内的分布情况，就是物种间的共线性分析，物种间可以是两个物种，也可以是多个物种。
-共线性分析可以用 MCScanX 软件进行分析，但是这个软件的官网已经 404 了，而且利用命令行来进行分析比较麻烦，这里建议大家使用 TBtools 上的工具，这个软件里面集成了共线性分析的相关插件，并可以进行可视化操作，分析起来很方便。
-原理 共线性分析最基本的原理是基于对基因序列进行 blast 比对，然后利用 MCScanX 软件对比对结果进行分析，这时候就需要有物种基因组的注释文件和比对结果，注释文件是用来分析这些基因所在的位置和数量，最后用可视化的软件把共线性分析的结果以图片形式展示出来。
-所需工具及文件 TBtools 软件、物种基因组序列、注释文件
-获取染色体长度文件 打开 TBtools 的 Fasta Stats 功能，导入物种基因组序列文件，设置好输出文件，获取染色体长度文件
-将 chr len.txt 文件的内容粘贴到 Excel，只保留 ID 和 length 两列的数据，删除 chr len.txt 文件中原有的数据，将 ID 和 length 两列数据保存在 chr len.txt 中
-共线性分析 打开 TBtools 的 One Step MCScanX 功能，这里它需要输入两个物种的基因组序列文件和注释文件，我们两个都导入拟南芥的进行物种内的共线性分析，这个过程中如果出现报错，关掉即可，不用理会
-获得关联文件 打开 TBtools 的 Text Merge for MCScanX 功能，导入上一步分析结果（在输出目录中）中的 Collinearity 文件，将分析结果转换为 GenePairTable
-打开 TBtools 的 Text Transformat for Micro-Synteny View 功能，导入上一步获得的 GenePairTable 文件和分析结果中的以。gff 为拓展名的文件（即简化后的注释文件），获得 LinkedRegion 文件，也就是基因间的关联文件 LinkedRegion</description></item><item><title>顺式作用元件分析</title><link>https://yuanj.top/posts/6c282499/</link><pubDate>Wed, 29 Mar 2023 15:20:56 +0000</pubDate><guid>https://yuanj.top/posts/6c282499/</guid><description>概念 顺式作用元件 (cis-acting element) 存在于基因旁侧序列中能影响基因表达的序列
-顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用
-所需工具及文件 Gff3 注释文件、基因组全部序列、TBtools、plantcare 网站
-提取启动子区域 首先要做的第一步是提取所有基因的 CDS 序列
-提取时需要在初始化后将 TBtools 的设置改为如下配置
-然后提取目标基因的启动子序列，打开 TBtools 的 Fasta Extract or Filter，设置好序列文件、输出文件、基因 ID，点击 start 开始
-转换大小写 打开 Sequenxe Manipulate 工具，将提取出来的所有序列复制进去，全部转为大写
-新建文本文档保存转换后的序列
-上传至 plantcare 网站 现在需要打开网站 http://bioinformatics.psb.ugent.be/webtools/plantcare/html/ 将刚刚保存的序列上传进行顺势作用元件预测
-等待一会后会收到网站发出的一封邮件，下载邮件中的附件然后解压，解压之后得到一个拓展名为 tar 的文件，再进行解压
-整理网站返回信息 用 excel 打开解压出来的 tab 文件，此时 excel 中显示的就是这些基因的元件信息
-筛选我们需要的物种，这里我选择了水稻
-删除元件名称、元件序列、增减个数、加/减、物种等我们不需要的信息，然后为了保证最后的图片可看，这里需要扩大一下起始位置，较大的可以减少 20，较小的可以增大 20。并且需要将含有空白信息的项删除，不然 TBtools 会报错。最终整理成如下格式：
-新建序列长度文件 下面需要再新建一个关于序列长度的文件，格式如下：
-可视化 打开 TBtools 的 Simple BioSequence Viewer 功能，导入长度信息文件和元件信息，点击 start 开始
-最终得到可视化结果</description></item></channel></rss>
+out.emapper.annotations.description.txt，对应的功能文本描述 out.emapper.annotations.GO.txt，对应的是 GO 注释结果，可直接用于 TBtools GO 富集分析，当注释背景文件 out.emapper.annotations.KEGG_Knum.txt，对应的是 KEGG 注释结果，可直接用于 TBtools KEGG 富集分析，当背景注释文件 out.emapper.annotations.pfam.domain.txt，对应的是 PFAM 结构域注释，注意，这个注释结果是定性的，即有无某结构域，如果一个序列有多个相同结构域，只会显示一个</description></item></channel></rss>
