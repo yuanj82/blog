@@ -357,4 +357,4 @@ Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also co
 纷纷大雪，大雪铺满归来时的道路。最初的一拜天地，也是最后的一谢天地。
 ——摘自蜘蛛的 《十宗罪》
 2023/10/04 天气阴 感觉这张图有点意思
-最近 Cloudflare 更改了策略，加上国内最近似乎又在屏蔽 Cloudflare 的 DNS，手机上一直打不开博客，电脑上有时候也需要刷新几次才能打开 &amp;hellip; 只能将域名接回 DNSpod，主要的两个域名 hieroglyphs.top 和 huangjin-lab.cn 的 DNS 接回去了，其它一些无关紧要的域名还在 Cloudflare 用来绑定 Worker 和 R 存储桶等。DNS 为什么要接入到 Cloudflare？ 因为 DNSpod 归属腾讯云，腾讯云的界面是在一言难尽，还动不动要验证、登录什么的，实在无语，如果接入 DNSpod 还不行，那可能就是 Vercel 的问题，只能再换别的服务，不过我还是会把 DNS 接到 Cloudflare &amp;hellip;</description></item></channel></rss>
+最近 Cloudflare 更改了策略，加上国内最近似乎又在屏蔽 Cloudflare 的 DNS，手机上一直打不开博客，电脑上有时候也需要刷新几次才能打开 &amp;hellip; 只能将域名接回 DNSpod，主要的两个域名 hieroglyphs.top 和 huangjin-lab.cn 的 DNS 接回去了，其它一些无关紧要的域名还在 Cloudflare 用来绑定 Worker 和 R2 存储桶等。DNS 为什么要接入到 Cloudflare？ 因为 DNSpod 归属腾讯云，腾讯云的界面是在一言难尽，还动不动要验证、登录什么的，实在无语，如果接入 DNSpod 还不行，那可能就是 Vercel 的问题，只能再换别的服务，不过我还是会把 DNS 接到 Cloudflare &amp;hellip;</description></item></channel></rss>
