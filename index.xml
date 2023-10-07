@@ -349,7 +349,8 @@ HMMER HMMER 是基于隐马尔可夫模型，用于生物序列分析工作的�
 最终得到可视化结果</description></item><item><title>About</title><link>https://yuanj.top/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/about/</guid><description>Hello 👋 I’m YuanJiao. I come from Chengdu University of Technology and I am studying computer technology and bioinformatics .
 You can find me at Bilibili or WeChat Official Account and get more information.
 At the same time, I have been studying and practicing at Molecular Ecology&amp;amp;Molecular Toxicology Research Group .
-Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also connect with me on WeChat and GitHub .</description></item><item><title>Essay</title><link>https://yuanj.top/essay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/essay/</guid><description>2023/10/06 有雨 之前将 Python ID 转换程序重构了一下，使代码结构更加合理，并且更方便增加新的插件，但是打包时还是遇到了问题，使用 pyinstaller 和 cxfreeze 打包的程序都不能正常运行，输入 ID 之后程序就退出了，目前还没找到好的解决方法，只能先要求用户安装 Python 环境再使用了。我想的另一个解决方法就是在仓库中添加 Python 压缩包，再写一个 bat 脚本来将 Python 解压后放到指定目录，并且把 Python 添加到环境变量，然后再用另一个 bat 脚本来启动程序。但这个方案似乎有些过于麻烦了，只能先这样，后面再解决打包成 exe 程序后闪退的问题了。
+Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also connect with me on WeChat and GitHub .</description></item><item><title>Essay</title><link>https://yuanj.top/essay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/essay/</guid><description>2023/10/07 多云转晴 今天天气真不错~
+2023/10/06 有雨 之前将 Python ID 转换程序重构了一下，使代码结构更加合理，并且更方便增加新的插件，但是打包时还是遇到了问题，使用 pyinstaller 和 cxfreeze 打包的程序都不能正常运行，输入 ID 之后程序就退出了，目前还没找到好的解决方法，只能先要求用户安装 Python 环境再使用了。我想的另一个解决方法就是在仓库中添加 Python 压缩包，再写一个 bat 脚本来将 Python 解压后放到指定目录，并且把 Python 添加到环境变量，然后再用另一个 bat 脚本来启动程序。但这个方案似乎有些过于麻烦了，只能先这样，后面再解决打包成 exe 程序后闪退的问题了。
 2023/10/05 天气阴 那一刻，时光之河的并蒂花上，一只蝴蝶对另一只蝴蝶说：”梁兄，别来无恙？
 如果存在前生和来世，洛阳有牡丹盛开，济南有荷花凋谢，金陵的梅花飘香，北京的月季绽放，我们前生和来世的家在哪里？
 从西晋到东晋，从长安到西安，三生三世，你还在我心底。我们一直形影不离，蝶翅约定了双飞，是谁在亭子里弹琴？
