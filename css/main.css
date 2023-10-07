@@ -648,7 +648,8 @@ section.main .content .markdown ol li {
 }
 section.main .content .markdown li {
   list-style-position: outside;
-  margin-left: 1em;
+  margin-left: 2rem;
+  font-size: 1rem;
 }
 section.main .content .markdown em {
   font-style: italic;
