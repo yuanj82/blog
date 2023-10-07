@@ -177,7 +177,6 @@ section.header .name {
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
-  text-transform: uppercase;
   color: #555;
 }
 section.header h3.self-intro {
@@ -192,7 +191,6 @@ section.header h3.self-intro {
 section.header nav {
   font-size: 14px;
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 section.header nav ul {
   list-style: none;
@@ -346,7 +344,6 @@ section.main .content .title-container .initials {
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
-  text-transform: uppercase;
   color: #666;
 }
 section.main .content .title-container .initials a {
@@ -365,7 +362,6 @@ section.main .content .page-heading {
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
-  text-transform: uppercase;
   margin-bottom: 16px;
 }
 section.main .content .front-matter .page-heading {
@@ -671,7 +667,6 @@ section.main .content .markdown abbr {
   font-size: 0.85rem;
   font-weight: bold;
   color: #666666;
-  text-transform: uppercase;
 }
 section.main .content .markdown abbr[title] {
   cursor: help;
