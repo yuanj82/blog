@@ -604,7 +604,7 @@ section.main .content .markdown h6 {
 section.main .content .markdown code,
 section.main .content .markdown pre,
 section.main .content p .literal {
-  font-family: 'Ubuntu Mono', 'Menlo', monospace;
+  font-family: 'ZhuZiAWan';
   font-size: 1rem;
   background-color: #f7f7f7;
   width: auto;
@@ -615,6 +615,9 @@ section.main .content p .literal {
   /* enclosed by single backtick (`) */
   padding: .15em .5em;
   border-radius: 2px;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 section.main .content .markdown pre {
   /* Hugo specific: consider using the 'highlight' shortcode */
