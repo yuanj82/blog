@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'ZhuZiAWan';	
+  src: url(https://unpkg.com/yuanj2003@1.0.4/public/ZhuZiAWan.ttf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 .dark {
   color: #333 !important;
 }
@@ -174,6 +181,7 @@ section.header .content {
 }
 section.header .name {
   font-size: 18px;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
@@ -181,6 +189,7 @@ section.header .name {
 }
 section.header h3.self-intro {
   font-size: 1em;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
@@ -190,6 +199,7 @@ section.header h3.self-intro {
 }
 section.header nav {
   font-size: 14px;
+  font-family: 'ZhuZiAWan';
   margin-bottom: 16px;
 }
 section.header nav ul {
@@ -326,6 +336,7 @@ section.main .container {
 section.main .content {
   color: #111;
   font-size: 16px;
+  font-family: 'ZhuZiAWan';
 }
 section.main .content .title-container {
   display: -webkit-flex;
@@ -341,6 +352,7 @@ section.main .content .title-container {
 section.main .content .title-container .initials {
   display: none;
   font-size: 18px;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
@@ -359,6 +371,7 @@ section.main .content .title-container .initials a:hover {
 }
 section.main .content .page-heading {
   font-size: 20px !important;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
@@ -423,6 +436,7 @@ section.main .container.f04 .content {
 }
 section.main .container.f04 .content .num {
   margin: 30px 0px 30px 0;
+  font-family: 'ZhuZiAWan';
   font-weight: 200;
   font-size: 50px;
 }
@@ -478,6 +492,7 @@ section.main .container .content .no-bullet {
 }
 section.main .container .content .no-bullet .date {
   font-size: 18px;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
@@ -560,6 +575,7 @@ section.main .content .markdown h4,
 section.main .content .markdown h5,
 section.main .content .markdown h6 {
   font-size: 18px;
+  font-family: 'ZhuZiAWan';
   letter-spacing: -0.005rem;
   font-weight: 700;
   color: #333;
