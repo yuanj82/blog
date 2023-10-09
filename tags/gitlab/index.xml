@@ -4,7 +4,7 @@ GitHub 仓库地址：https://github.com/YuanJ2003/auto-hmmer
 概述 该项目主要是通过 CI/CD 功能，拉取 Ubuntu 镜像，并且安装所需的软件，执行对应的 Python 程序，实现自动化，只需要在input.py中输入 pfam 网站上的 PF 编号、阈值范围和物种即可，仓库中我只存放了水稻、拟南芥和玉米的蛋白质序列，其他物种的序列，自行上传后更改input.py中的物种变量即可
 Python 程序 五个 Python 程序分别执行不同的功能、通常上一程序执行完毕才能顺利执行下一个程序
 input.py PF_number = &amp;#34;PF00031&amp;#34; evaluation_threshold = &amp;#34;1e-5&amp;#34; species = &amp;#34;Oryza_sativa&amp;#34; ## The repository only contains the genome protein sequences of three species: Arabidopsis_thaliana , Oryza_sativa , and Zea_mays 这里是定义全局变量，将其整合在一个文件中，便于输入
-data_preparation.py import requests import input hmm = &amp;#34;http://pfam-legacy.</description></item><item><title>自托管 Gitlab and 极狐 Gitlab 自动化部署实践</title><link>https://yuanj.top/posts/56d5b593/</link><pubDate>Sun, 25 Jun 2023 16:21:54 +0000</pubDate><guid>https://yuanj.top/posts/56d5b593/</guid><description>最近将代码全部迁到极狐的 Gitlab 了，极狐与原生的 Gitlab 几乎一模一样，不过对国内开发者的支持更好，Cli/CD 也不需要验证信用卡可以直接使用 Vercel 默认可以直接导入的仓库只有 GitHub、原生 Gitlab、Bitbucket 和 Azure，本来我是通过镜像仓库把仓库同步发到 GitHub 再用 Vercle 部署的，今天看到 Vercel 的文档说可以使用 Cli/CD 将自托管的项目部署到 Vercel，尝试了一下
+data_preparation.py import requests import input hmm = &amp;#34;http://pfam-legacy.</description></item><item><title>自托管 Gitlab and 极狐 Gitlab 自动化 CI/CD 实践</title><link>https://yuanj.top/posts/56d5b593/</link><pubDate>Sun, 25 Jun 2023 16:21:54 +0000</pubDate><guid>https://yuanj.top/posts/56d5b593/</guid><description>最近将代码全部迁到极狐的 Gitlab 了，极狐与原生的 Gitlab 几乎一模一样，不过对国内开发者的支持更好，Cli/CD 也不需要验证信用卡可以直接使用 Vercel 默认可以直接导入的仓库只有 GitHub、原生 Gitlab、Bitbucket 和 Azure，本来我是通过镜像仓库把仓库同步发到 GitHub 再用 Vercle 部署的，今天看到 Vercel 的文档说可以使用 Cli/CD 将自托管的项目部署到 Vercel，尝试了一下
 自动部署博客到 Vercel 先到 Vercel 的 token 设置 中创建一个 token，加在 Gitlab 仓库 Cli/CD 的环境变量里面，变量名为VERCEL_TOKEN
 然后在本地仓库创建.gitlab-ci.yml配置文件
 内容如下
