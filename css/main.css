@@ -605,6 +605,7 @@ section.main .content .markdown code,
 section.main .content .markdown pre,
 section.main .content p .literal {
   /* font-family: 'ZhuZiAWan'; */
+  font-family: 'Ubuntu Mono', 'Menlo', monospace;
   font-size: 1rem;
   background-color: #f7f7f7;
   width: auto;
