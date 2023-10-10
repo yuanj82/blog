@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on YuanJ 's Blog</title><link>https://yuanj.top/posts/</link><description>Recent content in Posts on YuanJ 's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Mon, 09 Oct 2023 14:08:11 +0800</lastBuildDate><atom:link href="https://yuanj.top/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>[置顶] 专题：RNA-Seq 上游分析学习</title><link>https://yuanj.top/posts/ds89sdf/</link><pubDate>Thu, 07 Sep 2023 17:16:07 +0800</pubDate><guid>https://yuanj.top/posts/ds89sdf/</guid><description>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有 RNA 的总和，包括 mRNA 和非编码 RNA，相对于传统的芯片杂交平台，转录组测序无需预先针对已知序列设计探针，即可对任意物种的整体转录活动进行检测，提供更准确的数字化信号，更高的检测通量以及更广泛的检测范围，是目前深入研究转录组复杂性的强大工具，基于高通量测序平台的转录组测序技术能够全面获得物种特定组织或器官的转录本信息，从而进行基因表达水平研究、新转录本发现研究、转录本结构变异研究等
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on YuanJ 's Blog</title><link>https://yuanj.top/posts/</link><description>Recent content in Posts on YuanJ 's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 10 Oct 2023 19:40:49 +0800</lastBuildDate><atom:link href="https://yuanj.top/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>[置顶] 专题：RNA-Seq 上游分析学习</title><link>https://yuanj.top/posts/ds89sdf/</link><pubDate>Thu, 07 Sep 2023 17:16:07 +0800</pubDate><guid>https://yuanj.top/posts/ds89sdf/</guid><description>转录组测序的研究对象为特定细胞在某一功能状态下所能转录出来的所有 RNA 的总和，包括 mRNA 和非编码 RNA，相对于传统的芯片杂交平台，转录组测序无需预先针对已知序列设计探针，即可对任意物种的整体转录活动进行检测，提供更准确的数字化信号，更高的检测通量以及更广泛的检测范围，是目前深入研究转录组复杂性的强大工具，基于高通量测序平台的转录组测序技术能够全面获得物种特定组织或器官的转录本信息，从而进行基因表达水平研究、新转录本发现研究、转录本结构变异研究等
 RNA-seq 概述 版本信息 一些名词解释 大致流程 软件安装 数据获取与预处理 测序数据下载 参考基因组及注释文件 FastQc 质控 常用参数 进行质量检测 Trimmomatic 过滤低质量序列 常用参数 过滤低质量序列 hisat2 比对 建立索引 常用参数 进行比对 samtools 排序压缩 常用命令 排序压缩 featureCounts 生成基因计数表 常用参数 计数统计 参考 RNA-seq 概述 RNA-seq 是研究转录组应用最广泛，也是最重要的技术之一，RNA-seq 分析内容包括序列比对、转录本拼接、表达定量、差异分析、融合基因检测、可变剪接、RNA 编辑和突变检测等，具体流程和常用工具如下图所示，通常的分析不一定需要走完全部流程，按需进行，某些步骤可以跳过、简化等
 RNA-seq 中最常用的分析方法就是找出差异表达基因 (Differential gene expression, DEG)，在实验室中，标准流程就分为三步：
 step1: 构建测序文库，包括提取 RNA, 富集 mRNA 或清除核糖体 RNA, 合成 cDNA, 加上接头 step2: 在高通量测序平台（通常为 Illumina） 上对文库进行测序，每个样本的测序深度为 10-30M 读长 step3: 数据分析，具体而言：对测序得到的读长进行比对或组装到转录本上；对覆盖到每个基因区域的读长进行计数；根据统计模型鉴定不同样本间差异表达的基因，（这种分析过程是比较传统的方法） 版本信息 成都理工大学超算平台 Red Hat 4.</description></item><item><title>[置顶] 专题：基因家族鉴定</title><link>https://yuanj.top/posts/a4559e49/</link><pubDate>Thu, 01 Jun 2023 14:35:34 +0000</pubDate><guid>https://yuanj.top/posts/a4559e49/</guid><description>完整的基因家族鉴定流程，包含基因家族鉴定和基因家族的性质分析、基因分析、进化分析等
@@ -11,7 +11,12 @@ step1: 构建测序文库，包括提取 RNA, 富集 mRNA 或清除核糖体 RNA
 有时定义基因家族，从结构域角度来刻画。如：一类基因，其编码蛋白都含有同一个结构域，这一类基因是一个基因家族。这个定义信息更偏向功能信息，一般来说结构域决定某种功能，因为结构域序列保守，易形成稳定的三维结构。这与共同祖先的定义有些差别，很多结构域难找得到其共同祖先。另外一个基因的共同祖先定义比较复杂的，越是历史久远的祖先，因为物种的在进化过程中发生了很多丢失和增加事件。共同祖先是个相对的概念，比如植物的共同祖先，一般包括藻类及其它绿色植物，而被子植物共同祖先，根据已经测序的基因组，一般指单双子叶之前就可以。如果从共同祖先定义基因家族，很多已知的基因家族就要被分成很多个基因家族。有很多网站（数据库）专门收集结构域，比如 Pfam 和 InterPro，这两个数据库内容差不多。这些数据库以 Hmmer 算法为基础，根据 Uniprot 中包含的蛋白，进行序列连配找到保守的片段（结构域），再以这些序列使用 Hmmer 构建种子，保存这些种子。一个蛋白拿过来后，与这些种子比对，根据打分能判断出这个蛋白是不是含有这个结构域，这也是判断一个基因编码蛋白是不是属于这个家族。
 研究思路 关于基因家族的鉴定思路主要包括以下部分：
 基因家族成员鉴定
-确定研究的基因家族 家族成员的基本特征确定（参考已有物种） 参考序列集合的准备或下载该基因家族的隐马尔科夫模型 目标物种序列和注释信息的下载或准备 双向 Blast 比对或 HMMER Search 获取可能的成员 基于保守结构域进行进一步筛选 结合系统发育树、保守结构域和保守基序（motif）等确定最终的基因家族成员 基因家族成员的性质分析</description></item><item><title>关于博客更新的三两事</title><link>https://yuanj.top/posts/ioas7a6/</link><pubDate>Mon, 09 Oct 2023 14:08:11 +0800</pubDate><guid>https://yuanj.top/posts/ioas7a6/</guid><description>写博客这么久了，还是挺有感触的，记录一下写博客的一些经历
+确定研究的基因家族 家族成员的基本特征确定（参考已有物种） 参考序列集合的准备或下载该基因家族的隐马尔科夫模型 目标物种序列和注释信息的下载或准备 双向 Blast 比对或 HMMER Search 获取可能的成员 基于保守结构域进行进一步筛选 结合系统发育树、保守结构域和保守基序（motif）等确定最终的基因家族成员 基因家族成员的性质分析</description></item><item><title>最新版 hmmer 查找同源基因</title><link>https://yuanj.top/posts/hmmd234csda/</link><pubDate>Tue, 10 Oct 2023 19:40:49 +0800</pubDate><guid>https://yuanj.top/posts/hmmd234csda/</guid><description>pfam 官网已经通知，将数据迁移到 interpro 了，所以之前下载 hmm 模型的方法已经不适应了，需要进行一些改变。
+打开 interpro 网站，首页往下翻，找到 pfam
+搜索结构域
+进入结构域的详情页面，点击左栏的 Alignment，选择 seed 然后下载种子文件，下载后是一个压缩包，解压后是 SEED.ann 文件，与之前旧版数据库里的 PFseed_xxxx.txt 是一样的。
+接着再点击左栏的 Curation，下载 hmm 模型文件。
+之后的 hmmer 的使用就和之前一样，没什么变化了。</description></item><item><title>关于博客更新的三两事</title><link>https://yuanj.top/posts/ioas7a6/</link><pubDate>Mon, 09 Oct 2023 14:08:11 +0800</pubDate><guid>https://yuanj.top/posts/ioas7a6/</guid><description>写博客这么久了，还是挺有感触的，记录一下写博客的一些经历
 开始 自大一开始，我就开始写博客了，但前面很多的时间都花在寻找一个合适的博客上面，最初我使用的是博客园，虽然博客园的界面看上去比较古老，但它却实在是国内技术论坛中的一股清流，当 CSDN 等大肆塞入广告、会员机制的时候，博客园始终如一，所以大一的时候我将使用 Linux 的经历和学习 Python 的笔记都放在上面了，但后来发现，还是有一些弊端，后来使用华为云开发者社区、腾讯云开发者社区等，都有同样的一些问题：
 文章需要审核 界面无法自定义个性化（博客园可以自定义 css） 无法设置自定义域名 只能在网页上写，且体验一般 于是乎，就走上了自建博客之路。
 Hexo 博客 在一位计算机学长的推荐下，第一次使用了 Hexo 博客框架，最初使用的是一款仙人掌主题 hexo-theme-cactus，简约大气，但还是有一些问题：
@@ -41,7 +46,7 @@ Psipred Novopro Prabi 以 Novopro 网站为例，上传前面所提到的那个�
 def ID_converter(ID): with open(&amp;#34;./ID.txt&amp;#34;, &amp;#34;r+&amp;#34;) as file: ID_corresponding_list = file.readlines() for ID in ID_corresponding_list: if gene in ID: print(&amp;#39;RAP ID:{}&amp;#39;.format(ID.split(&amp;#39;\t&amp;#39;)[0])) print(&amp;#39;MSU ID:{}&amp;#39;.format(ID.split(&amp;#39;\t&amp;#39;)[1])) global OS_ID OS_ID = ID.split(&amp;#39;\t&amp;#39;)[0] break else: continue else: print(&amp;#34;sorry, ID not found!&amp;#34;) ID_converter函数从 ID.txt 中读取 ID 对应关系，这个文件是从 RAP-DB 上下载的，RAP-DB 也是我们最常用的水稻 ID 转换工具，对应关系如下面的格式：
 Os01g0100100 LOC_Os01g01010.1,LOC_Os01g01010.2 Os01g0100200 LOC_Os01g01019.1 Os01g0100300 None 逐行读取 ID 的对应关系之后，for 循环内嵌 if 判断在每一行 ID 中搜索包含输入的 ID，找到对应的行之后根据制表符（\t）进行分割，前面的是 RAP ID，后面的是 MSU ID，分开进行输出，最后再将 RAP ID 定义为全局变量以便于下一个函数调用。</description></item><item><title>虚拟机三种网络模式的区别</title><link>https://yuanj.top/posts/adsf98asdf/</link><pubDate>Sun, 01 Oct 2023 22:43:20 +0800</pubDate><guid>https://yuanj.top/posts/adsf98asdf/</guid><description>Bridged（桥接模式） 虚拟机与宿主机处于同一网段，能够与同一网段下的其它主机（包括外部主机与虚拟主机）通信，但由于同一网段最多只有255个IP，所以容易造成IP冲突。
 NAT（地址转换模式） 虚拟机拥有独立的虚拟网卡，会在宿主机产生一个同一网段下的新IP，与宿主机构成独立的通信网络，并且虚拟机可以通过宿主机的IP代理访问宿主机网络内的其它主机，但外部网络无法直接访问虚拟机（没有代理），不造成IP冲突。
-Host-Only（仅主机模式） 虚拟机为独立的系统，其实就是NAT模式去除了虚拟NAT设备，使用虚拟网卡、虚拟交换机来与虚拟机进行网络访问。</description></item><item><title>序列比对原理（一）：双序列比对</title><link>https://yuanj.top/posts/jsfdkdshbj/</link><pubDate>Tue, 26 Sep 2023 10:38:27 +0800</pubDate><guid>https://yuanj.top/posts/jsfdkdshbj/</guid><description>双序列比对即对两条序列进行编辑，通过插入、删除或替换字符串使两条序列长度相同，在尽可能少的编辑操作下使尽可能多的序列匹配
+Host-Only（仅主机模式） 虚拟机为独立的系统，其实就是NAT模式去除了虚拟NAT设备，使用虚拟网卡、虚拟交换机来与虚拟机进行网络访问。</description></item><item><title>双序列比对原理</title><link>https://yuanj.top/posts/jsfdkdshbj/</link><pubDate>Tue, 26 Sep 2023 10:38:27 +0800</pubDate><guid>https://yuanj.top/posts/jsfdkdshbj/</guid><description>双序列比对即对两条序列进行编辑，通过插入、删除或替换字符串使两条序列长度相同，在尽可能少的编辑操作下使尽可能多的序列匹配
 例如两条序列：
 M:ACATT-CAC
 N:AC-TAACAT
@@ -60,41 +65,7 @@ SCI2 区及以上 最新的文献 环境科学与工程相关 影响因子尽量
 跳转到 sciencedirect 查看全文并且下载 pdf
 但点击 View PDF 后一直是空白页，网上找到的方法也不行，我想到用学校的 VPN 进入 sciencedirect 数据库
 搜索关键词，选择符合我所需要的条件的文献，选中全部下载
-文献下载一直是一个痛点，比较麻烦，市面上也有很多付费帮忙下载的，但自己要是掌握了方法的话就可以任意下载了，靠高校的数据库下载也会很容易的，尤其外文文献，中文文献貌似只有知网比较全面，但是期刊比较多，学校没有购买对应期刊的数据库的时候又该怎么办？不过一般比较顶尖的论文都发在英文期刊吧，SCI 英文文章一般质量较高，有一定的创新性，科学性和严谨性，有点什么重大研究的，首先想到的都是发国际期刊，而中文期刊貌似从英文期刊也“借鉴”了不少？掌握英文文献的下载实在是太重要了~</description></item><item><title>写诗吧</title><link>https://yuanj.top/posts/weixiaolinh9823/</link><pubDate>Sat, 16 Sep 2023 11:21:13 +0800</pubDate><guid>https://yuanj.top/posts/weixiaolinh9823/</guid><description>我明白你会来，所以我等
-凡事都有偶然的凑巧
-结果却又如宿命的必然
-龙应当藏在云里
-你应当藏在心里
-日头没有辜负我们
-我们也切莫辜负日头
-有些路看起来很近
-走去却很远的
-缺少耐心永远走不到
-我不是天才，我只是耐烦
-一个女子在诗人的诗中
-永远不会老去
-但诗人他自己却老去了
-我温习你的一切
-我称量我的幸运
-且计算它
-但是无法使我弄清一点点
-日子平平的过了一个月
-一切人心上的病痛
-似乎皆在那份长长的白日下医治好了
-我原以为我是个受得了寂寞的人
-现在方明白我们自从在一起后
-我就变成了一个不能同你离开的人了
-即使怒发冲冠仍然把你牢牢藏在心里
-依旧想带你去看南方的云，去吹泰山的风，去看鸣山月泉的日落
-我想保护你不让你受委屈
-我心疼
-所以我不会冲你真正发火
-我想把你捧在手心里，放在心头上
-屏笑灯火间，梦里安佳人
-与其碌碌无为，不如情路漫漫
-醉了芳心夜茫茫，方见心上初识人
-我爱你
-PS: 很非主流是不？高中写的~</description></item><item><title>Python 计算等效 A 声级</title><link>https://yuanj.top/posts/ar90trgsjkl/</link><pubDate>Wed, 13 Sep 2023 21:24:56 +0800</pubDate><guid>https://yuanj.top/posts/ar90trgsjkl/</guid><description>利用 Python 计算国家环境噪声监测技术规范中的等效声级
+文献下载一直是一个痛点，比较麻烦，市面上也有很多付费帮忙下载的，但自己要是掌握了方法的话就可以任意下载了，靠高校的数据库下载也会很容易的，尤其外文文献，中文文献貌似只有知网比较全面，但是期刊比较多，学校没有购买对应期刊的数据库的时候又该怎么办？不过一般比较顶尖的论文都发在英文期刊吧，SCI 英文文章一般质量较高，有一定的创新性，科学性和严谨性，有点什么重大研究的，首先想到的都是发国际期刊，而中文期刊貌似从英文期刊也“借鉴”了不少？掌握英文文献的下载实在是太重要了~</description></item><item><title>Python 计算等效 A 声级</title><link>https://yuanj.top/posts/ar90trgsjkl/</link><pubDate>Wed, 13 Sep 2023 21:24:56 +0800</pubDate><guid>https://yuanj.top/posts/ar90trgsjkl/</guid><description>利用 Python 计算国家环境噪声监测技术规范中的等效声级
 import math with open(&amp;#34;./data.txt&amp;#34;) as noise_data: lines = noise_data.readlines() number_string = &amp;#39;\t&amp;#39;.join(lines) number = number_string .split(&amp;#39;\t&amp;#39;) number = [x.strip() for x in number if x.strip()!=&amp;#39;&amp;#39;] number.pop(0) number.pop(200) # number.pop(400) def L_number(order): for i in number[:order]: l = 0 l = l + (1/order)*pow(order, (0.1)*float(i)) L_10 = 10*math.log(10,l) for i in number[:order+40]: l = 0 l = l + (1/(order + 40))*pow(order, (0.1)*float(i)) L_50 = 10*math.log(10,l) for i in number[:order+80]: l = 0 l = l + (1/(order + 80))*pow(order, (0.</description></item><item><title>Python生成随机数例子</title><link>https://yuanj.top/posts/ad90adf/</link><pubDate>Tue, 12 Sep 2023 12:35:51 +0800</pubDate><guid>https://yuanj.top/posts/ad90adf/</guid><description>import random import os def noise(location, number): result = &amp;#34;&amp;#34; if location == &amp;#39;library&amp;#39;: result += &amp;#34;图书馆噪声数据：&amp;#34; result += &amp;#39;\n\n&amp;#39; if location == &amp;#39;lab&amp;#39;: result += &amp;#34;实验楼噪声数据：&amp;#34; result += &amp;#39;\n\n&amp;#39; if location == &amp;#39;dormitory&amp;#39;: result += &amp;#34;寝室噪声数据：&amp;#34; result += &amp;#39;\n\n&amp;#39; for i in range(10): for i in range(10): noise_figure = number + random.uniform(0,6) result += str(&amp;#34;{:.5}&amp;#34;.format(noise_figure),) + &amp;#39;\t&amp;#39; result += &amp;#39;\n&amp;#39; result += &amp;#39;\n&amp;#39; with open(&amp;#34;./data.txt&amp;#34;, &amp;#34;a&amp;#34;) as data: data = data.</description></item><item><title>RNA Seq 上游分析实践</title><link>https://yuanj.top/posts/kjasdf98/</link><pubDate>Fri, 08 Sep 2023 20:29:36 +0800</pubDate><guid>https://yuanj.top/posts/kjasdf98/</guid><description>之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
 还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list
 我使用的是下列数据
@@ -204,13 +175,7 @@ eggNOG-mapper 注释 打开 eggNOG-mapper 主页 上传序列文件并输入邮�
 eggNOG-mapper Helper 接下来我们便使用 TBtools 的 eggNOG-mapper Helper 插件来整理结果
 很快就能完成，完成后就可以查看整理好的信息
 输出文件中，大家可能最关注的有四个：
-out.emapper.annotations.description.txt，对应的功能文本描述 out.emapper.annotations.GO.txt，对应的是 GO 注释结果，可直接用于 TBtools GO 富集分析，当注释背景文件 out.emapper.annotations.KEGG_Knum.txt，对应的是 KEGG 注释结果，可直接用于 TBtools KEGG 富集分析，当背景注释文件 out.emapper.annotations.pfam.domain.txt，对应的是 PFAM 结构域注释，注意，这个注释结果是定性的，即有无某结构域，如果一个序列有多个相同结构域，只会显示一个</description></item><item><title>借用 CI/CD 自动化鉴定基因家族</title><link>https://yuanj.top/posts/e745dc74/</link><pubDate>Sat, 22 Jul 2023 23:39:07 +0000</pubDate><guid>https://yuanj.top/posts/e745dc74/</guid><description>我们通常在进行基因家族鉴定时，需要使用 hmmer 来搜索某一基因的同源基因，尤其是具有相同结构域并且同源程度足够高的基因，我们会将其暂且定为一个基因家族，但 hmmer 安装、hmmbuild、hmmsearch 这些步骤通常是很简单的，但有些时候又会比较繁琐，加之后面需要筛选基因，收集蛋白质序列，这个过程不易消耗太多时间，于是乎，我写了一个项目，借用 Gitlab runner or Github Action 自动化查找同源基因并提取 ID 与蛋白质序列
-极狐 Gitlab 仓库地址：https://jihulab.com/YuanJ2003/auto-hmmer
-GitHub 仓库地址：https://github.com/YuanJ2003/auto-hmmer
-概述 该项目主要是通过 CI/CD 功能，拉取 Ubuntu 镜像，并且安装所需的软件，执行对应的 Python 程序，实现自动化，只需要在input.py中输入 pfam 网站上的 PF 编号、阈值范围和物种即可，仓库中我只存放了水稻、拟南芥和玉米的蛋白质序列，其他物种的序列，自行上传后更改input.py中的物种变量即可
-Python 程序 五个 Python 程序分别执行不同的功能、通常上一程序执行完毕才能顺利执行下一个程序
-input.py PF_number = &amp;#34;PF00031&amp;#34; evaluation_threshold = &amp;#34;1e-5&amp;#34; species = &amp;#34;Oryza_sativa&amp;#34; ## The repository only contains the genome protein sequences of three species: Arabidopsis_thaliana , Oryza_sativa , and Zea_mays 这里是定义全局变量，将其整合在一个文件中，便于输入
-data_preparation.py import requests import input hmm = &amp;#34;http://pfam-legacy.</description></item><item><title>Linux 下安装 BUSCO</title><link>https://yuanj.top/posts/24ed802/</link><pubDate>Fri, 21 Jul 2023 17:22:17 +0000</pubDate><guid>https://yuanj.top/posts/24ed802/</guid><description>Benchmarking Universal Single-Copy Orthologs (BUSCO) 是用于评估基因组组装和注释的完整性的工具 通过与已有单拷贝直系同源数据库的比较，得到有多少比例的数据库能够有比对，比例越高代表基因组完整度越好 官网说 BUSCO 直接可以用 conda 安装，但&amp;hellip; 我从来没有成功过，经过多次的实践，总结了能够成功安装 BUSCO 的方法&amp;hellip;
+out.emapper.annotations.description.txt，对应的功能文本描述 out.emapper.annotations.GO.txt，对应的是 GO 注释结果，可直接用于 TBtools GO 富集分析，当注释背景文件 out.emapper.annotations.KEGG_Knum.txt，对应的是 KEGG 注释结果，可直接用于 TBtools KEGG 富集分析，当背景注释文件 out.emapper.annotations.pfam.domain.txt，对应的是 PFAM 结构域注释，注意，这个注释结果是定性的，即有无某结构域，如果一个序列有多个相同结构域，只会显示一个</description></item><item><title>Linux 下安装 BUSCO</title><link>https://yuanj.top/posts/24ed802/</link><pubDate>Fri, 21 Jul 2023 17:22:17 +0000</pubDate><guid>https://yuanj.top/posts/24ed802/</guid><description>Benchmarking Universal Single-Copy Orthologs (BUSCO) 是用于评估基因组组装和注释的完整性的工具 通过与已有单拷贝直系同源数据库的比较，得到有多少比例的数据库能够有比对，比例越高代表基因组完整度越好 官网说 BUSCO 直接可以用 conda 安装，但&amp;hellip; 我从来没有成功过，经过多次的实践，总结了能够成功安装 BUSCO 的方法&amp;hellip;
 可以评估三种数据类型：
 组装的基因组 转录组 注释到的基因对应的氨基酸序列 使用需要评估的生物类别所属的数据库（从 busco 数据库下载）比对，得出比对上数据库的完整性比例的信息
 BUSCO 官网 BUSCO v5 数据库 BUSCO 官网上介绍说可以直接使用 conda 安装，但据我实践，是不可以的，需要手动安装诸多依赖
