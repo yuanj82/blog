@@ -617,9 +617,7 @@ section.main .content p .literal {
   padding: .15em .5em;
   border-radius: 2px;
 }
-::-webkit-scrollbar {
-  display: none;
-}
+
 section.main .content .markdown pre {
   /* Hugo specific: consider using the 'highlight' shortcode */
   display: block;
