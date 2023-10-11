@@ -321,6 +321,9 @@ You can find me at Bilibili or WeChat Official Account and get more information.
 At the same time, I have been studying and practicing at Molecular Ecology&amp;amp;Molecular Toxicology Research Group .
 Contact You can reach me by email at hieroglyphs AT foxmail.com. You can also connect with me on WeChat and GitHub .</description></item><item><title>Essay</title><link>https://yuanj.top/essay/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yuanj.top/essay/</guid><description>2023/10/11 天气阴 今天打算使用本地安装 pfam_scan 在 Pfam 的数据库中搜索一系列基因的结构域，死活安装不上，conda 安装的话一直解决不了环境问题，如果在 Pfam 的 ftp 上下载安装包使用的话，又缺少 Perl 的依赖，只能放弃。
 后来使用 hmmer 网页工具 解决问题，并且收到邮件回复后使用 TBtools 可视化，但是可视化效果并不好，保存为 jpg 或 png 格式是看不清楚的，而使用 svg 格式保存，再用 IE 打开查看，效果很完美。
+从童年起，
+我便独自一人，照顾着历代的星辰。
+但遇见你以后，念念落地生根。
 2023/10/10 天气阴 今天蒋文君师姐说要尝试一下使用 pfam 的数据库来进行结构域注释，因为之前常用的都是 NCBI 或者 SMART 网站的，由于数据库之间的差异，hmmer 根据结构域检索的家族基因在 NCBI 的数据库中不一定都具有相同的结构域，所以使用同一数据库的工具和方法进行检索可以极大地避免这种情况。
 找到一个 pfam_scan 工具可以批量注释结构域，本想使用网页版速速解决了，但网页版输出的结果格式是打乱的。
 而本地自己构建的话，数据量又很大，Pfam-A.hmm 有 1.5GB 左右，只能在超算上做了，于是用 wget 把下载挂到后台，准备睡觉去了~
