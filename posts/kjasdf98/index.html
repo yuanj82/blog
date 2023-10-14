@@ -39,7 +39,7 @@ zip -r fastqc_report.zip fastqc_report/*.html 依据检测报告对序列进行�
 One-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
 <span class=tag><a href=/tags/transcriptomics/>Transcriptomics</a></span>
 <span class=separator>•</span>
-<span class=tag><a href=/tags/bioinformatics/>Bioinformatics</a></span></div></div></header><div class=post-content><blockquote><p>之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵</p></blockquote><p>还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/2023090820339.png alt></p><p>我使用的是下列数据</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-txt data-lang=txt><span class=line><span class=cl>SRR25907783
+<span class=tag><a href=/tags/bioinformatics/>Bioinformatics</a></span></div></div></header><div class=post-content><blockquote><p>之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵</p></blockquote><p>还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820339.png alt></p><p>我使用的是下列数据</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-txt data-lang=txt><span class=line><span class=cl>SRR25907783
 </span></span><span class=line><span class=cl>SRR25907784
 </span></span><span class=line><span class=cl>SRR25907785
 </span></span><span class=line><span class=cl>SRR25907786
@@ -51,7 +51,7 @@ One-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=tru
 </span></span><span class=line><span class=cl>mv ./SRR*/*.sra ./SRR
 </span></span><span class=line><span class=cl><span class=nb>cd</span> SRR
 </span></span><span class=line><span class=cl>nohup fastq-dump --gzip --split-3 SRR*.sra 
-</span></span></code></pre></div><p>这里千万不要在程序没有运行完成的时候就进行下一步操作，使用 top 可以查看后台进程</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/20230908204934.png alt></p><p>当程序运行完成后便可看到后台任务中已经没有前面运行的程序了</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/20230908205137.png alt></p><p>同一目录下的 nohup.out 文件中是后台进程的运行记录</p><p>拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir fastqc_report
+</span></span></code></pre></div><p>这里千万不要在程序没有运行完成的时候就进行下一步操作，使用 top 可以查看后台进程</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908204934.png alt></p><p>当程序运行完成后便可看到后台任务中已经没有前面运行的程序了</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205137.png alt></p><p>同一目录下的 nohup.out 文件中是后台进程的运行记录</p><p>拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir fastqc_report
 </span></span><span class=line><span class=cl>fastqc SRR2590778*.fastq.gz -o ./fastqc_report
 </span></span></code></pre></div><p>完成之后，将检测报告进行压缩，以便下载查看</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>zip -r fastqc_report.zip fastqc_report/*.html
 </span></span></code></pre></div><p>依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
@@ -85,6 +85,6 @@ One-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=tru
 </span></span><span class=line><span class=cl><span class=k>do</span>
 </span></span><span class=line><span class=cl>    featureCounts -T <span class=m>5</span> -t exon -g Name -a oryza_sativa.gff3 -o gene.counts -p oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>
 </span></span><span class=line><span class=cl><span class=k>done</span>
-</span></span></code></pre></div><p>至此完成，拿到矩阵</p><p>个人习惯完成分析后把文件进行一下归类</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/20230908205327.png alt></p><p>最后将数据下载到本地进行下游分析</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/2023090820577.png alt></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+</span></span></code></pre></div><p>至此完成，拿到矩阵</p><p>个人习惯完成分析后把文件进行一下归类</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205327.png alt></p><p>最后将数据下载到本地进行下游分析</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820577.png alt></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
 2023
 UncleCAT4</section></footer></main><script src=/js/coder.min.bf3def4cc889836d15cf3ab6357b9aaef07fabc3abf78b2a3b6eb00cd53c34e5.js integrity="sha256-vz3vTMiJg20Vzzq2NXuarvB/q8Or94sqO26wDNU8NOU="></script></body></html>

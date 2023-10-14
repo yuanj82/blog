@@ -12,10 +12,10 @@ Host-Only（仅主机模式） Link to heading 虚拟机为独立的系统，其
 One-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
 <span class=tag><a href=/tags/vmware/>VMware</a></span></div></div></header><div class=post-content><h2 id=bridged桥接模式>Bridged（桥接模式）
 <a class=heading-link href=#bridged%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>虚拟机与宿主机处于同一网段，能够与同一网段下的其它主机（包括外部主机与虚拟主机）通信，但由于同一网段最多只有255个IP，所以容易造成IP冲突。</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/202310012245243.png alt></p><h2 id=nat地址转换模式>NAT（地址转换模式）
+<span class=sr-only>Link to heading</span></a></h2><p>虚拟机与宿主机处于同一网段，能够与同一网段下的其它主机（包括外部主机与虚拟主机）通信，但由于同一网段最多只有255个IP，所以容易造成IP冲突。</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/202310012245243.png alt></p><h2 id=nat地址转换模式>NAT（地址转换模式）
 <a class=heading-link href=#nat%e5%9c%b0%e5%9d%80%e8%bd%ac%e6%8d%a2%e6%a8%a1%e5%bc%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>虚拟机拥有独立的虚拟网卡，会在宿主机产生一个同一网段下的新IP，与宿主机构成独立的通信网络，并且虚拟机可以通过宿主机的IP代理访问宿主机网络内的其它主机，但外部网络无法直接访问虚拟机（没有代理），不造成IP冲突。</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/202310012246822.png alt></p><h2 id=host-only仅主机模式>Host-Only（仅主机模式）
+<span class=sr-only>Link to heading</span></a></h2><p>虚拟机拥有独立的虚拟网卡，会在宿主机产生一个同一网段下的新IP，与宿主机构成独立的通信网络，并且虚拟机可以通过宿主机的IP代理访问宿主机网络内的其它主机，但外部网络无法直接访问虚拟机（没有代理），不造成IP冲突。</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/202310012246822.png alt></p><h2 id=host-only仅主机模式>Host-Only（仅主机模式）
 <a class=heading-link href=#host-only%e4%bb%85%e4%b8%bb%e6%9c%ba%e6%a8%a1%e5%bc%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>虚拟机为独立的系统，其实就是NAT模式去除了虚拟NAT设备，使用虚拟网卡、虚拟交换机来与虚拟机进行网络访问。</p><p><img src=https://jihulab.com/YuanJ2003/static/-/raw/main/blog-images/202310012247345.png alt></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+<span class=sr-only>Link to heading</span></a></h2><p>虚拟机为独立的系统，其实就是NAT模式去除了虚拟NAT设备，使用虚拟网卡、虚拟交换机来与虚拟机进行网络访问。</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/202310012247345.png alt></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
 2023
 UncleCAT4</section></footer></main><script src=/js/coder.min.bf3def4cc889836d15cf3ab6357b9aaef07fabc3abf78b2a3b6eb00cd53c34e5.js integrity="sha256-vz3vTMiJg20Vzzq2NXuarvB/q8Or94sqO26wDNU8NOU="></script></body></html>
