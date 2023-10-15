@@ -26,81 +26,80 @@ Conda 作为软件包管理器，可以帮助您查找和安装软件包。如�
 在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护
 Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试
 所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的
-下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta itemprop=datePublished content="2023-05-01T22:59:01+00:00"><meta itemprop=dateModified content="2023-05-01T22:59:01+00:00"><meta itemprop=wordCount content="339"><meta itemprop=image content="https://yuanj.top/images/avatare.png"><meta itemprop=keywords content="Linux,"><meta name=referrer content="no-referrer-when-downgrade"><style>body{font-family:Verdana,sans-serif;margin:auto;padding:20px;max-width:720px;text-align:left;background-color:#fff;word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:#444}h1,h2,h3,h4,h5,h6,strong,b{color:#222}a{color:#3273dc}.title{text-decoration:none;border:0}.title span{font-weight:400}nav a{margin-right:10px}textarea{width:100%;font-size:16px}input{font-size:16px}content{line-height:1.6}table{width:100%}img{max-width:100%;display:block;margin-left:auto;margin-right:auto}code{padding:2px 5px;background-color:#f2f2f2}pre code{color:#222;display:block;padding:20px;white-space:pre-wrap;font-size:14px;overflow-x:auto}div.highlight pre{background-color:initial;color:initial}div.highlight code{background-color:unset;color:unset}blockquote{border-left:1px solid #999;color:#222;padding-left:20px;font-style:italic}footer{padding:25px;text-align:center}.helptext{color:#777;font-size:small}.errorlist{color:#eba613;font-size:small}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}@media(prefers-color-scheme:dark){body{background-color:#333;color:#ddd}h1,h2,h3,h4,h5,h6,strong,b{color:#eee}a{color:#3273dc}code{background-color:#777}pre code{color:#ddd}blockquote{color:#ccc}textarea,input{background-color:#252525;color:#ddd}.helptext{color:#aaa}}</style></head><body><header><a href=/ class=title><h2>UncleCAT4</h2></a><nav><a href=/posts>Blog</a>
-<a href=/journal>Journal</a>
-<a href=/gestbook>Gestbook</a></nav></header><main><content><blockquote><p>做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置</p></blockquote><h2 id=什么是-conda>什么是 conda？</h2><p>Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等</p><p>Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件</p><p>Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本</p><p>在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护</p><p>Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试</p><p>所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的</p><h2 id=下载安装包>下载安装包</h2><p>使用下列命令来下载 miniconda3 的安装包</p><pre tabindex=0><code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
-</code></pre><p>如果系统提示找不到命令“wget”，那么使用下列命令安装 wget</p><pre tabindex=0><code>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint
-sudo apt install wget
-
-#CentOS 系，如 CentOS 7
-sudo yum install wget
-
-#Fedora 系统
-sudo dnf install wget
-
-#Arch 系，如 manjaro、Arch
-sudo pacman -S wget 
-</code></pre><h2 id=安装-miniconda3>安装 miniconda3</h2><p>下载完成之后，使用下列命令安装 miniconda3</p><pre tabindex=0><code>bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
-</code></pre><p>安装过程中会遇到下列几个问题</p><pre tabindex=0><code>#需要阅读开源协议，一直按回车键即可
-Welcome to Miniconda3 4.7.12
-
-In order to continue the installation process, please review the license
-agreement.
-Please, press ENTER to continue
-&gt;&gt;&gt; 
-===================================
-Miniconda End User License Agreement
-</code></pre><pre tabindex=0><code>#是否接受开源协议，输入 yes
-do you accept the license terms? [yes|no] [no] 
-&gt;&gt;&gt; Please answer &#39;yes&#39; or &#39;no&#39;:&#39; 
-&gt;&gt;&gt;
-</code></pre><pre tabindex=0><code>#指定安装位置，按回车使用默认位置即可
-## Miniconda3 will now be installed into this location: 
-## /root/miniconda3 
-## 
-## - Press ENTER to confirm the location 
-## - Press CTRL-C to abort the installation 
-## - Or specify a different location below 
-[/home/USER_NAME//miniconda3] &gt;&gt;&gt;
-</code></pre><pre tabindex=0><code>#安装完成，是否进行初始化，输入 yes
-installation finished. Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no] [no] 
-&gt;&gt;&gt; yes
-</code></pre><h2 id=更换清华源>更换清华源</h2><p>由于 conda 默认的源在国外，经常会出现网络问题而导致下载失败，所以我们需要换源</p><p>可以参照清华大学开源镜像站的说明 <a href=https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p><p>安装完成之后输入下列命令编辑 conda 源</p><pre tabindex=0><code>sudo nano ~/.condarc
-</code></pre><p>同样，如果系统提示找不到命令“nano”，那么使用下列命令安装 wget</p><pre tabindex=0><code>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint
-sudo apt install nano
-
-#CentOS 系，如 CentOS 7
-sudo yum install nano
-
-#Fedora 系统
-sudo dnf install nano
-
-#Arch 系，如 manjaro、Arch
-sudo pacman -S nano
-</code></pre><p>在编辑窗口中粘贴下列内容</p><pre tabindex=0><code>channels:
-  - conda-forge
-  - bioconda
-  - defaults
-show_channel_urls: true
-default_channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
-custom_channels:
-  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-auto_activate_base: false
-</code></pre><p>按 Ctrl+S 保存后按 Ctrl+X 退出</p><h2 id=创建虚拟环境>创建虚拟环境</h2><p>使用下列命令</p><pre tabindex=0><code>conda create -n env1 python=3.7
-
-#-n 后面是虚拟环境的名称，自己指定
-#python=3.7 说明创建一个 3.7 版本的 python 环境，根据自己的需要可以更换
-</code></pre><p>等待一小会之后会列出创建此环境所需的软件包，输入 y 确定即可</p><h2 id=安装软件>安装软件</h2><p>先激活虚拟环境</p><pre tabindex=0><code>conda activate env1
-#以上一步创建的环境为例
-</code></pre><p>如果我要搭建一个生信分析环境，那么需要安装 hmmer、samtools 等工具，激活环境后使用 conda install 命令安装</p><pre tabindex=0><code>conda install hmmer samtools hisat2
-</code></pre><p>同样，列出所需软件包之后输入 y 回车确定</p><h2 id=退出环境>退出环境</h2><p>使用完成之后需要退出环境</p><pre tabindex=0><code>conda deactivate
-</code></pre></content><p><a href=https://yuanj.top/posts/linux/>#Linux</a></p></main><footer>© 2023 UncleCAT4</footer></body></html>
+下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta itemprop=datePublished content="2023-05-01T22:59:01+00:00"><meta itemprop=dateModified content="2023-05-01T22:59:01+00:00"><meta itemprop=wordCount content="339"><meta itemprop=image content="https://yuanj.top/images/avatare.png"><meta itemprop=keywords content="Linux,"><meta name=referrer content="no-referrer-when-downgrade"><style>body{font-family:Verdana,sans-serif;font-size:15px;margin:auto;padding:20px;max-width:700px;text-align:left;background-color:#fff;word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:#444}h1,h2,h3,h4,h5,h6,strong,b{color:#222}a{color:#3d9ec1;text-decoration:none}a:hover{color:#bac0d3}.title{text-decoration:none;border:0}.title span{font-weight:400}nav a{margin-right:10px;color:#000;text-decoration-line:underline}nav a:hover{color:#bac0d3}.social-icons{float:right}.post-title{font-size:20px!important;border-left:5px solid #dae0e6!important;padding-left:20px!important;color:#697076;font-weight:400}.post-data{font-size:14px!important;padding-left:20px!important;font-weight:400}textarea{width:100%;font-size:16px}input{font-size:16px}content{line-height:1.6}table{width:100%}img{max-width:100%;display:block;margin-left:auto;margin-right:auto}code{padding:2px 5px;background-color:#f2f2f2}pre code{color:#222;display:block;padding:20px;white-space:pre-wrap;font-size:14px;overflow-x:auto}div.highlight pre{background-color:initial;color:initial}div.highlight code{background-color:unset;color:unset}blockquote{border-left:1px solid #999;color:#222;padding-left:20px;font-style:italic}footer{padding:25px;text-align:center}.helptext{color:#777;font-size:small}.errorlist{color:#eba613;font-size:small}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}</style></head><body><header><a href=/ class=title><h2>UncleCAT4</h2></a><nav><a href=/posts>Blog</a>
+<a href=/journal>Journal</a><div class=social-icons><a href=/misc>MISC</a></div></nav></header><main><h2 class=post-title>Linux 下安装 conda</h2><p><i><time class=post-data datetime=2023-05-01 pubdate>01 May, 2023</time></i></p><content><blockquote><p>做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置</p></blockquote><h2 id=什么是-conda>什么是 conda？</h2><p>Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等</p><p>Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件</p><p>Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本</p><p>在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护</p><p>Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试</p><p>所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的</p><h2 id=下载安装包>下载安装包</h2><p>使用下列命令来下载 miniconda3 的安装包</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
+</span></span></code></pre></div><p>如果系统提示找不到命令“wget”，那么使用下列命令安装 wget</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint</span>
+</span></span><span style=display:flex><span>sudo apt install wget
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#CentOS 系，如 CentOS 7</span>
+</span></span><span style=display:flex><span>sudo yum install wget
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#Fedora 系统</span>
+</span></span><span style=display:flex><span>sudo dnf install wget
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#Arch 系，如 manjaro、Arch</span>
+</span></span><span style=display:flex><span>sudo pacman -S wget 
+</span></span></code></pre></div><h2 id=安装-miniconda3>安装 miniconda3</h2><p>下载完成之后，使用下列命令安装 miniconda3</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
+</span></span></code></pre></div><p>安装过程中会遇到下列几个问题</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#需要阅读开源协议，一直按回车键即可</span>
+</span></span><span style=display:flex><span>Welcome to Miniconda3 4.7.12
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In order to <span style=color:#66d9ef>continue</span> the installation process, please review the license
+</span></span><span style=display:flex><span>agreement.
+</span></span><span style=display:flex><span>Please, press ENTER to <span style=color:#66d9ef>continue</span>
+</span></span><span style=display:flex><span>&gt;&gt;&gt; 
+</span></span><span style=display:flex><span><span style=color:#f92672>===================================</span>
+</span></span><span style=display:flex><span>Miniconda End User License Agreement
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#是否接受开源协议，输入 yes</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span> you accept the license terms? <span style=color:#f92672>[</span>yes|no<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>no<span style=color:#f92672>]</span> 
+</span></span><span style=display:flex><span>&gt;&gt;&gt; Please answer <span style=color:#e6db74>&#39;yes&#39;</span> or <span style=color:#e6db74>&#39;no&#39;</span>:<span style=color:#960050;background-color:#1e0010>&#39;</span> 
+</span></span><span style=display:flex><span>&gt;&gt;&gt;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#指定安装位置，按回车使用默认位置即可</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## Miniconda3 will now be installed into this location: </span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## /root/miniconda3 </span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## </span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## - Press ENTER to confirm the location </span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## - Press CTRL-C to abort the installation </span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## - Or specify a different location below </span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>/home/USER_NAME//miniconda3<span style=color:#f92672>]</span> &gt;&gt;&gt;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#安装完成，是否进行初始化，输入 yes</span>
+</span></span><span style=display:flex><span>installation finished. Do you wish the installer to initialize Miniconda3 by running conda init? <span style=color:#f92672>[</span>yes|no<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>no<span style=color:#f92672>]</span> 
+</span></span><span style=display:flex><span>&gt;&gt;&gt; yes
+</span></span></code></pre></div><h2 id=更换清华源>更换清华源</h2><p>由于 conda 默认的源在国外，经常会出现网络问题而导致下载失败，所以我们需要换源</p><p>可以参照清华大学开源镜像站的说明 <a href=https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p><p>安装完成之后输入下列命令编辑 conda 源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo nano ~/.condarc
+</span></span></code></pre></div><p>同样，如果系统提示找不到命令“nano”，那么使用下列命令安装 wget</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint</span>
+</span></span><span style=display:flex><span>sudo apt install nano
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#CentOS 系，如 CentOS 7</span>
+</span></span><span style=display:flex><span>sudo yum install nano
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#Fedora 系统</span>
+</span></span><span style=display:flex><span>sudo dnf install nano
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#Arch 系，如 manjaro、Arch</span>
+</span></span><span style=display:flex><span>sudo pacman -S nano
+</span></span></code></pre></div><p>在编辑窗口中粘贴下列内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>channels:
+</span></span><span style=display:flex><span>  - conda-forge
+</span></span><span style=display:flex><span>  - bioconda
+</span></span><span style=display:flex><span>  - defaults
+</span></span><span style=display:flex><span>show_channel_urls: true
+</span></span><span style=display:flex><span>default_channels:
+</span></span><span style=display:flex><span>  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+</span></span><span style=display:flex><span>  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+</span></span><span style=display:flex><span>  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+</span></span><span style=display:flex><span>custom_channels:
+</span></span><span style=display:flex><span>  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</span></span><span style=display:flex><span>auto_activate_base: false
+</span></span></code></pre></div><p>按 Ctrl+S 保存后按 Ctrl+X 退出</p><h2 id=创建虚拟环境>创建虚拟环境</h2><p>使用下列命令</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda create -n env1 python<span style=color:#f92672>=</span>3.7
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#-n 后面是虚拟环境的名称，自己指定</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#python=3.7 说明创建一个 3.7 版本的 python 环境，根据自己的需要可以更换</span>
+</span></span></code></pre></div><p>等待一小会之后会列出创建此环境所需的软件包，输入 y 确定即可</p><h2 id=安装软件>安装软件</h2><p>先激活虚拟环境</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda activate env1
+</span></span><span style=display:flex><span><span style=color:#75715e>#以上一步创建的环境为例</span>
+</span></span></code></pre></div><p>如果我要搭建一个生信分析环境，那么需要安装 hmmer、samtools 等工具，激活环境后使用 conda install 命令安装</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda install hmmer samtools hisat2
+</span></span></code></pre></div><p>同样，列出所需软件包之后输入 y 回车确定</p><h2 id=退出环境>退出环境</h2><p>使用完成之后需要退出环境</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda deactivate
+</span></span></code></pre></div></content><p><a href=https://yuanj.top/posts/linux/>#Linux</a></p></main><footer>© 2023 UncleCAT4</footer></body></html>
