@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><head><title>RNA Seq 上游分析实践 · UncleCAT4</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="UncleCAT4"><meta name=description content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
+<!doctype html><html lang=en-US><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://example.com/images/favicon.ico><title>RNA Seq 上游分析实践 | UncleCAT4</title><meta name=title content="RNA Seq 上游分析实践"><meta name=description content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
 还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list
 我使用的是下列数据
 SRR25907783 SRR25907784 SRR25907785 SRR25907786 SRR25907787 SRR25907788 使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载
@@ -9,7 +9,7 @@ nohup prefetch --option-file acc_list.txt 再使用脚本进行拆分
 拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩
 mkdir fastqc_report fastqc SRR2590778*.fastq.gz -o ./fastqc_report 完成之后，将检测报告进行压缩，以便下载查看
 zip -r fastqc_report.zip fastqc_report/*.html 依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环
-#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="RNA Seq 上游分析实践"><meta name=twitter:description content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
+#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta name=keywords content="Transcriptomics,Bioinformatics,"><meta property="og:title" content="RNA Seq 上游分析实践"><meta property="og:description" content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
 还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list
 我使用的是下列数据
 SRR25907783 SRR25907784 SRR25907785 SRR25907786 SRR25907787 SRR25907788 使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载
@@ -20,7 +20,7 @@ nohup prefetch --option-file acc_list.txt 再使用脚本进行拆分
 拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩
 mkdir fastqc_report fastqc SRR2590778*.fastq.gz -o ./fastqc_report 完成之后，将检测报告进行压缩，以便下载查看
 zip -r fastqc_report.zip fastqc_report/*.html 依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环
-#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta property="og:title" content="RNA Seq 上游分析实践"><meta property="og:description" content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
+#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta property="og:type" content="article"><meta property="og:url" content="https://example.com/posts/kjasdf98/"><meta property="og:image" content="https://example.com/images/avatare.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-09-08T20:29:36+08:00"><meta property="article:modified_time" content="2023-09-08T20:29:36+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://example.com/images/avatare.png"><meta name=twitter:title content="RNA Seq 上游分析实践"><meta name=twitter:description content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
 还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list
 我使用的是下列数据
 SRR25907783 SRR25907784 SRR25907785 SRR25907786 SRR25907787 SRR25907788 使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载
@@ -31,60 +31,64 @@ nohup prefetch --option-file acc_list.txt 再使用脚本进行拆分
 拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩
 mkdir fastqc_report fastqc SRR2590778*.fastq.gz -o ./fastqc_report 完成之后，将检测报告进行压缩，以便下载查看
 zip -r fastqc_report.zip fastqc_report/*.html 依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环
-#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta property="og:type" content="article"><meta property="og:url" content="https://yuanj.top/posts/kjasdf98/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-09-08T20:29:36+08:00"><meta property="article:modified_time" content="2023-09-08T20:29:36+08:00"><link rel=canonical href=https://yuanj.top/posts/kjasdf98/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.4ff0f6b1ce46fcca32601b45522839ee29e1edd49053a366cf597e1a2ebec060.css integrity="sha256-T/D2sc5G/MoyYBtFUig57inh7dSQU6Nmz1l+Gi6+wGA=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico sizes=any><link rel=icon type=image/png href=/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>UncleCAT4</a>
-<input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=/essay/>Essay</a></li><li class=navigation-item><a class=navigation-link href=/gestbook/>Gestbook</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://yuanj.top/posts/kjasdf98/>RNA Seq 上游分析实践</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i>
-<time datetime=2023-09-08T20:29:36+08:00>September 8, 2023</time></span>
-<span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i>
-One-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
-<span class=tag><a href=/tags/transcriptomics/>Transcriptomics</a></span>
-<span class=separator>•</span>
-<span class=tag><a href=/tags/bioinformatics/>Bioinformatics</a></span></div></div></header><div class=post-content><blockquote><p>之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵</p></blockquote><p>还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820339.png alt></p><p>我使用的是下列数据</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-txt data-lang=txt><span class=line><span class=cl>SRR25907783
-</span></span><span class=line><span class=cl>SRR25907784
-</span></span><span class=line><span class=cl>SRR25907785
-</span></span><span class=line><span class=cl>SRR25907786
-</span></span><span class=line><span class=cl>SRR25907787
-</span></span><span class=line><span class=cl>SRR25907788
-</span></span></code></pre></div><p>使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>nohup prefetch --option-file acc_list.txt 
-</span></span></code></pre></div><p>再使用脚本进行拆分</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
-</span></span></span><span class=line><span class=cl><span class=cp></span>mkdir SRR
-</span></span><span class=line><span class=cl>mv ./SRR*/*.sra ./SRR
-</span></span><span class=line><span class=cl><span class=nb>cd</span> SRR
-</span></span><span class=line><span class=cl>nohup fastq-dump --gzip --split-3 SRR*.sra 
-</span></span></code></pre></div><p>这里千万不要在程序没有运行完成的时候就进行下一步操作，使用 top 可以查看后台进程</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908204934.png alt></p><p>当程序运行完成后便可看到后台任务中已经没有前面运行的程序了</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205137.png alt></p><p>同一目录下的 nohup.out 文件中是后台进程的运行记录</p><p>拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir fastqc_report
-</span></span><span class=line><span class=cl>fastqc SRR2590778*.fastq.gz -o ./fastqc_report
-</span></span></code></pre></div><p>完成之后，将检测报告进行压缩，以便下载查看</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>zip -r fastqc_report.zip fastqc_report/*.html
-</span></span></code></pre></div><p>依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
-</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>for</span> i in <span class=o>{</span>3..8<span class=o>}</span>
-</span></span><span class=line><span class=cl><span class=k>do</span>
-</span></span><span class=line><span class=cl>    trimmomatic PE -threads <span class=m>1</span> -phred33 SRR2590778<span class=si>${</span><span class=nv>i</span><span class=si>}</span>_1.fastq.gz SRR2590778<span class=si>${</span><span class=nv>i</span><span class=si>}</span>_2.fastq.gz -summary oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>.summary -baseout SRR2590778<span class=si>${</span><span class=nv>i</span><span class=si>}</span>.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:5:20 HEADCROP:15 MINLEN:36
-</span></span><span class=line><span class=cl><span class=k>done</span>
-</span></span></code></pre></div><p>下载水稻的参考基因组和注释文件进行 hisat2 比对</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>wget https://ftp.ensemblgenomes.ebi.ac.uk/pub/plants/release-57/fasta/oryza_sativa/dna/Oryza_sativa.IRGSP-1.0.dna.toplevel.fa.gz
-</span></span><span class=line><span class=cl>wget https://ftp.ensemblgenomes.ebi.ac.uk/pub/plants/release-57/gff3/oryza_sativa/Oryza_sativa.IRGSP-1.0.57.gff3.gz
-</span></span></code></pre></div><p>把下载的文件解压后重命名，方便使用</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>gzip -d Oryza_sativa.IRGSP-1.0.dna.toplevel.fa.gz
-</span></span><span class=line><span class=cl>mv Oryza_sativa.IRGSP-1.0.dna.toplevel.fa oryza_sativa.fa
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>gzip -d Oryza_sativa.IRGSP-1.0.57.gff3.gz
-</span></span><span class=line><span class=cl>mv Oryza_sativa.IRGSP-1.0.57.gff3 oryza_sativa.gff3
-</span></span></code></pre></div><p>先构建 hisat2 索引</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hisat2-build oryza_sativa.fa oryza_sativa
-</span></span></code></pre></div><p>构建完成之后开始将 reads 比对到参考基因组，还是写成脚本进行</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
-</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>for</span> i in <span class=o>{</span>3..8<span class=o>}</span>
-</span></span><span class=line><span class=cl><span class=k>do</span>
-</span></span><span class=line><span class=cl>    hisat2 -x hisat2_index/oryza_sativa -p <span class=m>5</span> -1 SRR2590778<span class=si>${</span><span class=nv>i</span><span class=si>}</span>_1P.fastq.gz -2 SRR2590778<span class=si>${</span><span class=nv>i</span><span class=si>}</span>_2P.fastq.gz -S oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>.sam
-</span></span><span class=line><span class=cl><span class=k>done</span>
-</span></span></code></pre></div><p>比对完成后要进行排序压缩，到这里时我的 samtools 一直报错，Google 了一下才发现是 samtools 版本的一个 bug，安装指定版本就没问题了，于是新建 conda 环境进行安装</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>conda create -n samtools <span class=nv>python</span><span class=o>=</span>3.10
-</span></span><span class=line><span class=cl>conda search samtools
-</span></span><span class=line><span class=cl>conda install <span class=nv>samtools</span><span class=o>=</span>1.9  <span class=c1>#指定安装 1.9</span>
-</span></span></code></pre></div><p>安装完成继续进行，还是写成 bash 脚本一键进行，这里我将每次排序的结构按照 1-6 分别命名</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
-</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>for</span> i in <span class=o>{</span>3..8<span class=o>}</span>
-</span></span><span class=line><span class=cl><span class=k>do</span>
-</span></span><span class=line><span class=cl>    samtools sort -n -@ <span class=m>5</span> oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>.sam -o oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>
-</span></span><span class=line><span class=cl><span class=k>done</span>
-</span></span></code></pre></div><p>最后一步 featureCounts 生成基因计数表</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
-</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>for</span> i in <span class=o>{</span>3..8<span class=o>}</span>
-</span></span><span class=line><span class=cl><span class=k>do</span>
-</span></span><span class=line><span class=cl>    featureCounts -T <span class=m>5</span> -t exon -g Name -a oryza_sativa.gff3 -o gene.counts -p oryza_sativa_<span class=si>${</span><span class=nv>i</span><span class=si>}</span>
-</span></span><span class=line><span class=cl><span class=k>done</span>
-</span></span></code></pre></div><p>至此完成，拿到矩阵</p><p>个人习惯完成分析后把文件进行一下归类</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205327.png alt></p><p>最后将数据下载到本地进行下游分析</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820577.png alt></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023
-UncleCAT4</section></footer></main><script src=/js/coder.min.bf3def4cc889836d15cf3ab6357b9aaef07fabc3abf78b2a3b6eb00cd53c34e5.js integrity="sha256-vz3vTMiJg20Vzzq2NXuarvB/q8Or94sqO26wDNU8NOU="></script></body></html>
+#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta itemprop=name content="RNA Seq 上游分析实践"><meta itemprop=description content="之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵
+还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list
+我使用的是下列数据
+SRR25907783 SRR25907784 SRR25907785 SRR25907786 SRR25907787 SRR25907788 使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载
+nohup prefetch --option-file acc_list.txt 再使用脚本进行拆分
+#!/bin/bash mkdir SRR mv ./SRR*/*.sra ./SRR cd SRR nohup fastq-dump --gzip --split-3 SRR*.sra 这里千万不要在程序没有运行完成的时候就进行下一步操作，使用 top 可以查看后台进程
+当程序运行完成后便可看到后台任务中已经没有前面运行的程序了
+同一目录下的 nohup.out 文件中是后台进程的运行记录
+拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩
+mkdir fastqc_report fastqc SRR2590778*.fastq.gz -o ./fastqc_report 完成之后，将检测报告进行压缩，以便下载查看
+zip -r fastqc_report.zip fastqc_report/*.html 依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环
+#!/bin/bash for i in {3..8} do trimmomatic PE -threads 1 -phred33 SRR2590778${i}_1."><meta itemprop=datePublished content="2023-09-08T20:29:36+08:00"><meta itemprop=dateModified content="2023-09-08T20:29:36+08:00"><meta itemprop=wordCount content="198"><meta itemprop=image content="https://example.com/images/avatare.png"><meta itemprop=keywords content="Transcriptomics,Bioinformatics,"><meta name=referrer content="no-referrer-when-downgrade"><style>body{font-family:Verdana,sans-serif;margin:auto;padding:20px;max-width:720px;text-align:left;background-color:#fff;word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:#444}h1,h2,h3,h4,h5,h6,strong,b{color:#222}a{color:#3273dc}.title{text-decoration:none;border:0}.title span{font-weight:400}nav a{margin-right:10px}textarea{width:100%;font-size:16px}input{font-size:16px}content{line-height:1.6}table{width:100%}img{max-width:100%;display:block;margin-left:auto;margin-right:auto}code{padding:2px 5px;background-color:#f2f2f2}pre code{color:#222;display:block;padding:20px;white-space:pre-wrap;font-size:14px;overflow-x:auto}div.highlight pre{background-color:initial;color:initial}div.highlight code{background-color:unset;color:unset}blockquote{border-left:1px solid #999;color:#222;padding-left:20px;font-style:italic}footer{padding:25px;text-align:center}.helptext{color:#777;font-size:small}.errorlist{color:#eba613;font-size:small}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}@media(prefers-color-scheme:dark){body{background-color:#333;color:#ddd}h1,h2,h3,h4,h5,h6,strong,b{color:#eee}#no-style,a{color:#3273dc}code{background-color:#777}pre code{color:#ddd}blockquote{color:#ccc}textarea,input{background-color:#252525;color:#ddd}.helptext{color:#aaa}}</style></head><body><header><a href=/ class=title><h2>UncleCAT4</h2></a><nav><a href=/posts>Blog</a>
+<a href=/essay>Essay</a>
+<a href=/gestbook>Gestbook</a></nav></header><main><content><blockquote><p>之前那一篇文章主要讲的是一些知识与工具的用法，这次用六组数据进行分析，得到基因表达矩阵</p></blockquote><p>还是先从 NCBI 搜索数据，查看数据是双端测序的数据之后，多选条目，直接 Accession list</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820339.png alt></p><p>我使用的是下列数据</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>SRR25907783
+</span></span><span style=display:flex><span>SRR25907784
+</span></span><span style=display:flex><span>SRR25907785
+</span></span><span style=display:flex><span>SRR25907786
+</span></span><span style=display:flex><span>SRR25907787
+</span></span><span style=display:flex><span>SRR25907788
+</span></span></code></pre></div><p>使用 sra-tools 批量下载数据，并且使用 nohup 把程序挂在后台下载</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>nohup prefetch --option-file acc_list.txt 
+</span></span></code></pre></div><p>再使用脚本进行拆分</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>mkdir SRR
+</span></span><span style=display:flex><span>mv ./SRR*/*.sra ./SRR
+</span></span><span style=display:flex><span>cd SRR
+</span></span><span style=display:flex><span>nohup fastq-dump --gzip --split-3 SRR*.sra 
+</span></span></code></pre></div><p>这里千万不要在程序没有运行完成的时候就进行下一步操作，使用 top 可以查看后台进程</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908204934.png alt></p><p>当程序运行完成后便可看到后台任务中已经没有前面运行的程序了</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205137.png alt></p><p>同一目录下的 nohup.out 文件中是后台进程的运行记录</p><p>拆分完成后就需要进行质量检测，使用通配符批量检测，并且将检测报告放在单独一个文件夹以便后面进行压缩</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir fastqc_report
+</span></span><span style=display:flex><span>fastqc SRR2590778*.fastq.gz -o ./fastqc_report
+</span></span></code></pre></div><p>完成之后，将检测报告进行压缩，以便下载查看</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>zip -r fastqc_report.zip fastqc_report/*.html
+</span></span></code></pre></div><p>依据检测报告对序列进行过滤，参数之前已经讲过，这里数据比较多，写一个 bash 脚本的 for 循环</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>3..8<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    trimmomatic PE -threads <span style=color:#ae81ff>1</span> -phred33 SRR2590778<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>_1.fastq.gz SRR2590778<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>_2.fastq.gz -summary oryza_sativa_<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>.summary -baseout SRR2590778<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>.fastq.gz LEADING:3 TRAILING:3 SLIDINGWINDOW:5:20 HEADCROP:15 MINLEN:36
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>下载水稻的参考基因组和注释文件进行 hisat2 比对</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>wget https://ftp.ensemblgenomes.ebi.ac.uk/pub/plants/release-57/fasta/oryza_sativa/dna/Oryza_sativa.IRGSP-1.0.dna.toplevel.fa.gz
+</span></span><span style=display:flex><span>wget https://ftp.ensemblgenomes.ebi.ac.uk/pub/plants/release-57/gff3/oryza_sativa/Oryza_sativa.IRGSP-1.0.57.gff3.gz
+</span></span></code></pre></div><p>把下载的文件解压后重命名，方便使用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>gzip -d Oryza_sativa.IRGSP-1.0.dna.toplevel.fa.gz
+</span></span><span style=display:flex><span>mv Oryza_sativa.IRGSP-1.0.dna.toplevel.fa oryza_sativa.fa
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>gzip -d Oryza_sativa.IRGSP-1.0.57.gff3.gz
+</span></span><span style=display:flex><span>mv Oryza_sativa.IRGSP-1.0.57.gff3 oryza_sativa.gff3
+</span></span></code></pre></div><p>先构建 hisat2 索引</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>hisat2-build oryza_sativa.fa oryza_sativa
+</span></span></code></pre></div><p>构建完成之后开始将 reads 比对到参考基因组，还是写成脚本进行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>3..8<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    hisat2 -x hisat2_index/oryza_sativa -p <span style=color:#ae81ff>5</span> -1 SRR2590778<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>_1P.fastq.gz -2 SRR2590778<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>_2P.fastq.gz -S oryza_sativa_<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>.sam
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>比对完成后要进行排序压缩，到这里时我的 samtools 一直报错，Google 了一下才发现是 samtools 版本的一个 bug，安装指定版本就没问题了，于是新建 conda 环境进行安装</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda create -n samtools python<span style=color:#f92672>=</span>3.10
+</span></span><span style=display:flex><span>conda search samtools
+</span></span><span style=display:flex><span>conda install samtools<span style=color:#f92672>=</span>1.9  <span style=color:#75715e>#指定安装 1.9</span>
+</span></span></code></pre></div><p>安装完成继续进行，还是写成 bash 脚本一键进行，这里我将每次排序的结构按照 1-6 分别命名</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>3..8<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    samtools sort -n -@ <span style=color:#ae81ff>5</span> oryza_sativa_<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>.sam -o oryza_sativa_<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>最后一步 featureCounts 生成基因计数表</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>3..8<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    featureCounts -T <span style=color:#ae81ff>5</span> -t exon -g Name -a oryza_sativa.gff3 -o gene.counts -p oryza_sativa_<span style=color:#e6db74>${</span>i<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>至此完成，拿到矩阵</p><p>个人习惯完成分析后把文件进行一下归类</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/20230908205327.png alt></p><p>最后将数据下载到本地进行下游分析</p><p><img src=https://jihulab.com/UncleCAT4/static/-/raw/main/blog-images/2023090820577.png alt></p></content><p><a href=https://example.com/posts/transcriptomics/>#Transcriptomics</a>
+<a href=https://example.com/posts/bioinformatics/>#Bioinformatics</a></p></main><footer>© 2023 UncleCAT4</footer></body></html>

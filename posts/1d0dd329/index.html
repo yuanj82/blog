@@ -1,32 +1,34 @@
-<!doctype html><html lang=en><head><title>Linux 下安装 conda · UncleCAT4</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="UncleCAT4"><meta name=description content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
-什么是 conda？ Link to heading Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
+<!doctype html><html lang=en-US><head><meta http-equiv=x-clacks-overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://example.com/images/favicon.ico><title>Linux 下安装 conda | UncleCAT4</title><meta name=title content="Linux 下安装 conda"><meta name=description content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
+什么是 conda？ Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
 Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件
 Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本
 在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护
 Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试
-所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Linux 下安装 conda"><meta name=twitter:description content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
-什么是 conda？ Link to heading Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
+所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的
+下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta name=keywords content="Linux,"><meta property="og:title" content="Linux 下安装 conda"><meta property="og:description" content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
+什么是 conda？ Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
 Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件
 Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本
 在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护
 Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试
-所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的"><meta property="og:title" content="Linux 下安装 conda"><meta property="og:description" content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
-什么是 conda？ Link to heading Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
+所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的
+下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta property="og:type" content="article"><meta property="og:url" content="https://example.com/posts/1d0dd329/"><meta property="og:image" content="https://example.com/images/avatare.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-05-01T22:59:01+00:00"><meta property="article:modified_time" content="2023-05-01T22:59:01+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://example.com/images/avatare.png"><meta name=twitter:title content="Linux 下安装 conda"><meta name=twitter:description content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
+什么是 conda？ Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
 Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件
 Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本
 在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护
 Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试
-所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的"><meta property="og:type" content="article"><meta property="og:url" content="https://yuanj.top/posts/1d0dd329/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-05-01T22:59:01+00:00"><meta property="article:modified_time" content="2023-05-01T22:59:01+00:00"><link rel=canonical href=https://yuanj.top/posts/1d0dd329/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.4ff0f6b1ce46fcca32601b45522839ee29e1edd49053a366cf597e1a2ebec060.css integrity="sha256-T/D2sc5G/MoyYBtFUig57inh7dSQU6Nmz1l+Gi6+wGA=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico sizes=any><link rel=icon type=image/png href=/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>UncleCAT4</a>
-<input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=/essay/>Essay</a></li><li class=navigation-item><a class=navigation-link href=/gestbook/>Gestbook</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://yuanj.top/posts/1d0dd329/>Linux 下安装 conda</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i>
-<time datetime=2023-05-01T22:59:01Z>May 1, 2023</time></span>
-<span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i>
-2-minute read</span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
-<span class=tag><a href=/tags/linux/>Linux</a></span></div></div></header><div class=post-content><blockquote><p>做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置</p></blockquote><h2 id=什么是-conda>什么是 conda？
-<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%af-conda><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等</p><p>Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件</p><p>Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本</p><p>在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护</p><p>Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试</p><p>所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的</p><h2 id=下载安装包>下载安装包
-<a class=heading-link href=#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85%e5%8c%85><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>使用下列命令来下载 miniconda3 的安装包</p><pre tabindex=0><code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
+所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的
+下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta itemprop=name content="Linux 下安装 conda"><meta itemprop=description content="做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置
+什么是 conda？ Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等
+Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件
+Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本
+在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护
+Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试
+所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的
+下载安装包 使用下列命令来下载 miniconda3 的安装包"><meta itemprop=datePublished content="2023-05-01T22:59:01+00:00"><meta itemprop=dateModified content="2023-05-01T22:59:01+00:00"><meta itemprop=wordCount content="339"><meta itemprop=image content="https://example.com/images/avatare.png"><meta itemprop=keywords content="Linux,"><meta name=referrer content="no-referrer-when-downgrade"><style>body{font-family:Verdana,sans-serif;margin:auto;padding:20px;max-width:720px;text-align:left;background-color:#fff;word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:#444}h1,h2,h3,h4,h5,h6,strong,b{color:#222}a{color:#3273dc}.title{text-decoration:none;border:0}.title span{font-weight:400}nav a{margin-right:10px}textarea{width:100%;font-size:16px}input{font-size:16px}content{line-height:1.6}table{width:100%}img{max-width:100%;display:block;margin-left:auto;margin-right:auto}code{padding:2px 5px;background-color:#f2f2f2}pre code{color:#222;display:block;padding:20px;white-space:pre-wrap;font-size:14px;overflow-x:auto}div.highlight pre{background-color:initial;color:initial}div.highlight code{background-color:unset;color:unset}blockquote{border-left:1px solid #999;color:#222;padding-left:20px;font-style:italic}footer{padding:25px;text-align:center}.helptext{color:#777;font-size:small}.errorlist{color:#eba613;font-size:small}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}@media(prefers-color-scheme:dark){body{background-color:#333;color:#ddd}h1,h2,h3,h4,h5,h6,strong,b{color:#eee}#no-style,a{color:#3273dc}code{background-color:#777}pre code{color:#ddd}blockquote{color:#ccc}textarea,input{background-color:#252525;color:#ddd}.helptext{color:#aaa}}</style></head><body><header><a href=/ class=title><h2>UncleCAT4</h2></a><nav><a href=/posts>Blog</a>
+<a href=/essay>Essay</a>
+<a href=/gestbook>Gestbook</a></nav></header><main><content><blockquote><p>做生信的话，conda 应该是必要的软件之一吧？记录一下安装过程以及源的配置</p></blockquote><h2 id=什么是-conda>什么是 conda？</h2><p>Conda 是适用于任何语言的软件包、依赖项和环境管理系统&ndash;包括 Python，R，Ruby，Lua，Scala，Java，JavaScript，C / C ++，FORTRAN 等</p><p>Conda 是在 Windows、macOS 和 Linux 上运行的开源软件包管理系统和环境管理系统。Conda 可以快速安装、运行和更新软件包及其依赖项。Conda 可以轻松地在本地计算机上的环境中创建，保存，加载和切换。它是为 Python 程序创建的，但可以打包和分发适用于任何语言的软件</p><p>Conda 作为软件包管理器，可以帮助您查找和安装软件包。如果您需要一个能够使用不同版本 Python 的软件包，则无需切换到其他环境管理器，因为 conda 也是环境管理器。仅需几个命令，您就可以设置一个完全独立的环境来运行不同版本的 Python，同时继续在正常环境中运行喜欢的 Python 版本</p><p>在默认配置下，conda 可以安装和管理来自 repo.anaconda.com 仓库的 7,500 多个软件包，该仓库由 Anaconda 生成，审查和维护</p><p>Conda 也可以与 Travis CI 和 AppVeyor 等持续集成系统结合使用，以提供对代码的频繁，自动化测试</p><p>所有版本的 Anaconda， Miniconda 和 Anaconda 存储库均包含 conda 软件包和环境管理器 。Conda 也被包含在 Anaconda Enterprise 中，该公司为 Python，R，Node.js，Java 和其他应用程序堆栈提供现场企业包和环境管理。Conda 还可以在社区频道 conda- forge 上获取 。当然，也可以在 PyPI 中获取 Conda，但是通过这种方法可能不是最新的</p><h2 id=下载安装包>下载安装包</h2><p>使用下列命令来下载 miniconda3 的安装包</p><pre tabindex=0><code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
 </code></pre><p>如果系统提示找不到命令“wget”，那么使用下列命令安装 wget</p><pre tabindex=0><code>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint
 sudo apt install wget
 
@@ -38,9 +40,7 @@ sudo dnf install wget
 
 #Arch 系，如 manjaro、Arch
 sudo pacman -S wget 
-</code></pre><h2 id=安装-miniconda3>安装 miniconda3
-<a class=heading-link href=#%e5%ae%89%e8%a3%85-miniconda3><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>下载完成之后，使用下列命令安装 miniconda3</p><pre tabindex=0><code>bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
+</code></pre><h2 id=安装-miniconda3>安装 miniconda3</h2><p>下载完成之后，使用下列命令安装 miniconda3</p><pre tabindex=0><code>bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
 </code></pre><p>安装过程中会遇到下列几个问题</p><pre tabindex=0><code>#需要阅读开源协议，一直按回车键即可
 Welcome to Miniconda3 4.7.12
 
@@ -65,9 +65,7 @@ do you accept the license terms? [yes|no] [no]
 </code></pre><pre tabindex=0><code>#安装完成，是否进行初始化，输入 yes
 installation finished. Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no] [no] 
 &gt;&gt;&gt; yes
-</code></pre><h2 id=更换清华源>更换清华源
-<a class=heading-link href=#%e6%9b%b4%e6%8d%a2%e6%b8%85%e5%8d%8e%e6%ba%90><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>由于 conda 默认的源在国外，经常会出现网络问题而导致下载失败，所以我们需要换源</p><p>可以参照清华大学开源镜像站的说明 <a href=https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/ class=external-link target=_blank rel=noopener>https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p><p>安装完成之后输入下列命令编辑 conda 源</p><pre tabindex=0><code>sudo nano ~/.condarc
+</code></pre><h2 id=更换清华源>更换清华源</h2><p>由于 conda 默认的源在国外，经常会出现网络问题而导致下载失败，所以我们需要换源</p><p>可以参照清华大学开源镜像站的说明 <a href=https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p><p>安装完成之后输入下列命令编辑 conda 源</p><pre tabindex=0><code>sudo nano ~/.condarc
 </code></pre><p>同样，如果系统提示找不到命令“nano”，那么使用下列命令安装 wget</p><pre tabindex=0><code>#Debian 系，如 Ubuntu、Debian、deepin、Linuxmint
 sudo apt install nano
 
@@ -97,20 +95,12 @@ custom_channels:
   pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 auto_activate_base: false
-</code></pre><p>按 Ctrl+S 保存后按 Ctrl+X 退出</p><h2 id=创建虚拟环境>创建虚拟环境
-<a class=heading-link href=#%e5%88%9b%e5%bb%ba%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>使用下列命令</p><pre tabindex=0><code>conda create -n env1 python=3.7
+</code></pre><p>按 Ctrl+S 保存后按 Ctrl+X 退出</p><h2 id=创建虚拟环境>创建虚拟环境</h2><p>使用下列命令</p><pre tabindex=0><code>conda create -n env1 python=3.7
 
 #-n 后面是虚拟环境的名称，自己指定
 #python=3.7 说明创建一个 3.7 版本的 python 环境，根据自己的需要可以更换
-</code></pre><p>等待一小会之后会列出创建此环境所需的软件包，输入 y 确定即可</p><h2 id=安装软件>安装软件
-<a class=heading-link href=#%e5%ae%89%e8%a3%85%e8%bd%af%e4%bb%b6><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>先激活虚拟环境</p><pre tabindex=0><code>conda activate env1
+</code></pre><p>等待一小会之后会列出创建此环境所需的软件包，输入 y 确定即可</p><h2 id=安装软件>安装软件</h2><p>先激活虚拟环境</p><pre tabindex=0><code>conda activate env1
 #以上一步创建的环境为例
 </code></pre><p>如果我要搭建一个生信分析环境，那么需要安装 hmmer、samtools 等工具，激活环境后使用 conda install 命令安装</p><pre tabindex=0><code>conda install hmmer samtools hisat2
-</code></pre><p>同样，列出所需软件包之后输入 y 回车确定</p><h2 id=退出环境>退出环境
-<a class=heading-link href=#%e9%80%80%e5%87%ba%e7%8e%af%e5%a2%83><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>使用完成之后需要退出环境</p><pre tabindex=0><code>conda deactivate
-</code></pre></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023
-UncleCAT4</section></footer></main><script src=/js/coder.min.bf3def4cc889836d15cf3ab6357b9aaef07fabc3abf78b2a3b6eb00cd53c34e5.js integrity="sha256-vz3vTMiJg20Vzzq2NXuarvB/q8Or94sqO26wDNU8NOU="></script></body></html>
+</code></pre><p>同样，列出所需软件包之后输入 y 回车确定</p><h2 id=退出环境>退出环境</h2><p>使用完成之后需要退出环境</p><pre tabindex=0><code>conda deactivate
+</code></pre></content><p><a href=https://example.com/posts/linux/>#Linux</a></p></main><footer>© 2023 UncleCAT4</footer></body></html>
