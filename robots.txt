@@ -1,2 +1,0 @@
-User-Agent: *
-Sitemap: https://yuanj.top/sitemap.xml
