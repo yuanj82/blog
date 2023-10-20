@@ -67,7 +67,6 @@ body {
 
 .wrapper {
 	padding: 15px;
-	padding-top: 25px;
 	background: #fff;
 }
 
@@ -89,8 +88,10 @@ body {
     flex: 1 0 31.66%;
     -webkit-order: 2;
     order: 2;
+	padding: 10px; 
     min-width: 0;
     margin: 0 0 0 2.5%;
+	background: #e6ecf2;
 }
 
 .sidebar--left {
@@ -962,7 +963,6 @@ textarea {
 /* Widgets */
 .widget {
 	padding-bottom: 10px;
-	padding-right: 15px;
 	overflow: hidden;
 }
 
@@ -976,7 +976,7 @@ textarea {
 	margin: 0;
 	position: relative;
 	padding: 3px;
-    padding-left: 10px;
+	padding-left: 10px;
 	font-size: 16px;
 	font-size: .8rem;
 	font-weight: bold;
@@ -1022,7 +1022,7 @@ textarea {
 
 /* Tags Widget */
 .widget-taglist__link {
-	display: list-item;
+	display: block;
 	margin: 0 4px 4px 0;
 	padding-left: 10px;
 	font-size: 13px;
