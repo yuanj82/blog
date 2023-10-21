@@ -623,6 +623,14 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	border-bottom: 1px dotted #ebebeb;
 }
 
+.post_busuanzi p {
+	color: #666;
+	padding: 5px 0;
+	font-size: 13px;
+    font-size: .8125rem;
+	border-bottom: 1px dotted #ebebeb;
+}
+
 .post__lead {
 	margin-top: 4px;
 	margin-top: .25rem;
@@ -984,8 +992,8 @@ textarea {
 }
 
 .widget__item {
-	display: block;
-	padding: 5px 0 0 10px;
+	display: list-item;
+	padding: 5px 0 0 0;
 	text-decoration: underline;
 }
 
@@ -1003,9 +1011,13 @@ textarea {
 	border-radius: 2em;
 }
 
+.widget__content {
+	padding-left: 30px;
+}
+
 /* misc widget */
 .widget-misc__item {
-	padding: 0 0 0 10px;
+	padding: 0;
 	border: 0;
 }
 
@@ -1024,7 +1036,6 @@ textarea {
 .widget-taglist__link {
 	display: block;
 	margin: 0 4px 4px 0;
-	padding-left: 10px;
 	font-size: 13px;
 	font-weight: normal;
 }
