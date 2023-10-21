@@ -1029,20 +1029,6 @@ textarea {
 	font-weight: normal;
 }
 
-/* Languages Widget */
-.widget-languages__link {
-	display: block;
-}
-
-.widget-languages__link:hover .widget-languages__link-btn {
-	color: #fff;
-	background: #a3b8cc;
-}
-
-.widget-languages__link-btn {
-	display: inline-block;
-}
-
 /* Media Queries */
 @media screen and (max-width: 1475px) {
 	.container--outer {
