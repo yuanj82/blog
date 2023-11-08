@@ -1,0 +1,191 @@
+<!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Conda 的一些报错 - 猫四叔</title><script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><meta property="og:title" content="Conda 的一些报错"><meta property="og:description" content="昨天重装了系统，WSL 也重装了一下，之前我使用 R 的时候是通过 conda 来管理环境的，R 包夜通过 conda 来安装，但是今天安装 R 包时出现一些问题。"><meta property="og:type" content="article"><meta property="og:url" content="https://yuanj.top/posts/d74gf95jf8/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-11-08T16:56:08+08:00"><meta property="article:modified_time" content="2023-11-08T16:56:08+08:00"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css></head><body class=body><div class="container container--outer"><header class=header><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><div class="container header__container"><div class=logo><a class=logo__link href=/ title=猫四叔 rel=home><div class="logo__item logo__text"><div class=logo__title>猫四叔</div><div class=logo__tagline>思绪来得快去得也快，偶尔会在这里停留</div></div></a></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Conda 的一些报错</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><time class=meta__text datetime=2023-11-08T16:56:08+08:00>November 08, 2023</time></div></div><div class=post_busuanzi><p>本文总阅读量 <span id=busuanzi_value_page_pv></span> 次</p></div></header><div class="content post__content clearfix"><p>昨天重装了系统，WSL 也重装了一下，之前我使用 R 的时候是通过 conda 来管理环境的，R 包夜通过 conda 来安装，但是今天安装 R 包时出现一些问题。</p><p>在安装 DEseq2 的时候，使用命令：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda install -c bioconda bioconductor-deseq2
+</span></span></code></pre></div><p>但是报错：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ERROR conda.core.link: _execute <span style=color:#f92672>(</span> <span style=color:#ae81ff>730</span> <span style=color:#f92672>)</span> : An error occurred <span style=color:#66d9ef>while</span> installing package <span style=color:#e6db74>&#39;bioconda:: bioconductor-genomeinfodbdata-1.2.10-r43hdfd78af_0&#39;</span>.
+</span></span><span style=display:flex><span>Rolling back transaction: <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>class: LinkError
+</span></span><span style=display:flex><span>message:
+</span></span><span style=display:flex><span>post-link script failed <span style=color:#66d9ef>for</span> package bioconda:: bioconductor-genomeinfodbdata-1.2.10-r43hdfd78af_0
+</span></span><span style=display:flex><span>location of failed script: /home/unclecat4/conda/envs/r/bin/.bioconductor-genomeinfodbdata-post-link.sh
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; script messages &lt;<span style=color:#f92672>==</span>
+</span></span><span style=display:flex><span>&lt;None&gt;
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; script output &lt;<span style=color:#f92672>==</span>
+</span></span><span style=display:flex><span>stdout: /home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/<span style=color:#e6db74>&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;</span>: OK
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>stderr: ++ dirname -- /home/unclecat4/conda/envs/r/bin/installBiocDataPackage.sh
+</span></span><span style=display:flex><span>+ SCRIPT_DIR<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages
+</span></span><span style=display:flex><span>+ json<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.fn&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ FN<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.urls[]&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.md5&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ MD5<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;&#34;ebd78c10d672c0eb6c893d6135bdeca9&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ STAGING<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10
+</span></span><span style=display:flex><span>+ mkdir -p /home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10
+</span></span><span style=display:flex><span>+ TARBALL<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ SUCCESS<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>+ <span style=color:#66d9ef>for</span> URL in <span style=color:#e6db74>${</span>URLS[@]<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>++ tr -d <span style=color:#e6db74>&#39;&#34;&#39;</span>
+</span></span><span style=display:flex><span>++ echo <span style=color:#e6db74>&#39;&#34;https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ URL<span style=color:#f92672>=</span>https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz
+</span></span><span style=display:flex><span>++ tr -d <span style=color:#e6db74>&#39;&#34;&#39;</span>
+</span></span><span style=display:flex><span>++ echo <span style=color:#e6db74>&#39;&#34;ebd78c10d672c0eb6c893d6135bdeca9&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ MD5<span style=color:#f92672>=</span>ebd78c10d672c0eb6c893d6135bdeca9
+</span></span><span style=display:flex><span>+ curl -L https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz
+</span></span><span style=display:flex><span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span></span><span style=display:flex><span>                                 Dload  Upload   Total   Spent    Left  Speed
+</span></span><span style=display:flex><span><span style=color:#ae81ff>100</span> 11.4M  <span style=color:#ae81ff>100</span> 11.4M    <span style=color:#ae81ff>0</span>     <span style=color:#ae81ff>0</span>  3055k      <span style=color:#ae81ff>0</span>  0:00:03  0:00:03 --:--:-- 3056k
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> 0 <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>++ uname -s
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> Linux <span style=color:#f92672>==</span> <span style=color:#ae81ff>\L\i\n\u\x</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>+ md5sum -c
+</span></span><span style=display:flex><span>+ SUCCESS<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>+ break
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> <span style=color:#ae81ff>1</span> !<span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>+ R CMD INSTALL --library<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/lib/R/library <span style=color:#e6db74>&#39;/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>During startup - Warning messages:
+</span></span><span style=display:flex><span>1: package 『utils』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span><span style=display:flex><span>2: package 『stats』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span><span style=display:flex><span>Error: .onLoad failed in loadNamespace <span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> <span style=color:#e6db74>&#39;utils&#39;</span>, details:
+</span></span><span style=display:flex><span>  call: system <span style=color:#f92672>(</span> paste <span style=color:#f92672>(</span> which, shQuote <span style=color:#f92672>(</span> names <span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>))</span> , intern <span style=color:#f92672>=</span> TRUE, ignore.stderr <span style=color:#f92672>=</span> TRUE <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  error: error in running command
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> code: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>kwargs:
+</span></span><span style=display:flex><span><span style=color:#f92672>{}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Traceback <span style=color:#f92672>(</span> most recent call last <span style=color:#f92672>)</span> :
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1082, in __call__
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> func <span style=color:#f92672>(</span> *args, **kwargs <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/main.py&#34;</span>, line 87, in _main
+</span></span><span style=display:flex><span>    exit_code <span style=color:#f92672>=</span> do_call <span style=color:#f92672>(</span> args, p <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/conda_argparse.py&#34;</span>, line 84, in do_call
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> getattr <span style=color:#f92672>(</span> module, func_name <span style=color:#f92672>)</span> <span style=color:#f92672>(</span> args, parser <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/main_install.py&#34;</span>, line 20, in execute
+</span></span><span style=display:flex><span>    install <span style=color:#f92672>(</span> args, parser, <span style=color:#e6db74>&#39;install&#39;</span> <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/install.py&#34;</span>, line 316, in install
+</span></span><span style=display:flex><span>    handle_txn <span style=color:#f92672>(</span> unlink_link_transaction, prefix, args, newenv <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/install.py&#34;</span>, line 345, in handle_txn
+</span></span><span style=display:flex><span>    unlink_link_transaction.execute <span style=color:#f92672>(</span> <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/core/link.py&#34;</span>, line 281, in execute
+</span></span><span style=display:flex><span>    self._execute <span style=color:#f92672>(</span> tuple <span style=color:#f92672>(</span> concat <span style=color:#f92672>(</span> interleave <span style=color:#f92672>(</span> itervalues <span style=color:#f92672>(</span> self.prefix_action_groups <span style=color:#f92672>))</span> <span style=color:#f92672>))</span> <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/core/link.py&#34;</span>, line 744, in _execute
+</span></span><span style=display:flex><span>    raise CondaMultiError <span style=color:#f92672>(</span> tuple <span style=color:#f92672>(</span> concatv <span style=color:#f92672>(</span>
+</span></span><span style=display:flex><span>conda.CondaMultiErrorclass: LinkError
+</span></span><span style=display:flex><span>message:
+</span></span><span style=display:flex><span>post-link script failed <span style=color:#66d9ef>for</span> package bioconda:: bioconductor-genomeinfodbdata-1.2.10-r43hdfd78af_0
+</span></span><span style=display:flex><span>location of failed script: /home/unclecat4/conda/envs/r/bin/.bioconductor-genomeinfodbdata-post-link.sh
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; script messages &lt;<span style=color:#f92672>==</span>
+</span></span><span style=display:flex><span>&lt;None&gt;
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; script output &lt;<span style=color:#f92672>==</span>
+</span></span><span style=display:flex><span>stdout: /home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/<span style=color:#e6db74>&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;</span>: OK
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>stderr: ++ dirname -- /home/unclecat4/conda/envs/r/bin/installBiocDataPackage.sh
+</span></span><span style=display:flex><span>+ SCRIPT_DIR<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages
+</span></span><span style=display:flex><span>+ json<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.fn&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ FN<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.urls[]&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>+ URLS<span style=color:#f92672>+=</span> <span style=color:#f92672>(</span> $value <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ IFS<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>+ read -r value
+</span></span><span style=display:flex><span>++ yq <span style=color:#e6db74>&#39;.&#34;genomeinfodbdata-1.2.10&#34;.md5&#39;</span> /home/unclecat4/conda/envs/r/bin/../share/bioconductor-data-packages/dataURLs.json
+</span></span><span style=display:flex><span>+ MD5<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;&#34;ebd78c10d672c0eb6c893d6135bdeca9&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ STAGING<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10
+</span></span><span style=display:flex><span>+ mkdir -p /home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10
+</span></span><span style=display:flex><span>+ TARBALL<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ SUCCESS<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>+ <span style=color:#66d9ef>for</span> URL in <span style=color:#e6db74>${</span>URLS[@]<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>++ tr -d <span style=color:#e6db74>&#39;&#34;&#39;</span>
+</span></span><span style=display:flex><span>++ echo <span style=color:#e6db74>&#39;&#34;https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ URL<span style=color:#f92672>=</span>https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz
+</span></span><span style=display:flex><span>++ tr -d <span style=color:#e6db74>&#39;&#34;&#39;</span>
+</span></span><span style=display:flex><span>++ echo <span style=color:#e6db74>&#39;&#34;ebd78c10d672c0eb6c893d6135bdeca9&#34;&#39;</span>
+</span></span><span style=display:flex><span>+ MD5<span style=color:#f92672>=</span>ebd78c10d672c0eb6c893d6135bdeca9
+</span></span><span style=display:flex><span>+ curl -L https://bioconductor.org/packages/3.17/data/annotation/src/contrib/GenomeInfoDbData_1.2.10.tar.gz
+</span></span><span style=display:flex><span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span></span><span style=display:flex><span>                                 Dload  Upload   Total   Spent    Left  Speed
+</span></span><span style=display:flex><span><span style=color:#ae81ff>100</span> 11.4M  <span style=color:#ae81ff>100</span> 11.4M    <span style=color:#ae81ff>0</span>     <span style=color:#ae81ff>0</span>  3055k      <span style=color:#ae81ff>0</span>  0:00:03  0:00:03 --:--:-- 3056k
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> 0 <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>++ uname -s
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> Linux <span style=color:#f92672>==</span> <span style=color:#ae81ff>\L\i\n\u\x</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>+ md5sum -c
+</span></span><span style=display:flex><span>+ SUCCESS<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>+ break
+</span></span><span style=display:flex><span>+ <span style=color:#f92672>[[</span> <span style=color:#ae81ff>1</span> !<span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>]]</span>
+</span></span><span style=display:flex><span>+ R CMD INSTALL --library<span style=color:#f92672>=</span>/home/unclecat4/conda/envs/r/lib/R/library <span style=color:#e6db74>&#39;/home/unclecat4/conda/envs/r/share/genomeinfodbdata-1.2.10/&#34;GenomeInfoDbData_1.2.10.tar.gz&#34;&#39;</span>
+</span></span><span style=display:flex><span>During startup - Warning messages:
+</span></span><span style=display:flex><span>1: package 『utils』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span><span style=display:flex><span>2: package 『stats』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span><span style=display:flex><span>Error: .onLoad failed in loadNamespace <span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> <span style=color:#e6db74>&#39;utils&#39;</span>, details:
+</span></span><span style=display:flex><span>  call: system <span style=color:#f92672>(</span> paste <span style=color:#f92672>(</span> which, shQuote <span style=color:#f92672>(</span> names <span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>))</span> , intern <span style=color:#f92672>=</span> TRUE, ignore.stderr <span style=color:#f92672>=</span> TRUE <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  error: error in running command
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> code: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>kwargs:
+</span></span><span style=display:flex><span><span style=color:#f92672>{}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>: &lt;exception str <span style=color:#f92672>(</span> <span style=color:#f92672>)</span> failed&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>During handling of the above exception, another exception occurred:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Traceback <span style=color:#f92672>(</span> most recent call last <span style=color:#f92672>)</span> :
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/bin/conda&#34;</span>, line 13, in &lt;module&gt;
+</span></span><span style=display:flex><span>    sys.exit <span style=color:#f92672>(</span> main <span style=color:#f92672>(</span> <span style=color:#f92672>))</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/cli/main.py&#34;</span>, line 155, in main
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> conda_exception_handler <span style=color:#f92672>(</span> _main, *args, **kwargs <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1374, in conda_exception_handler
+</span></span><span style=display:flex><span>    return_value <span style=color:#f92672>=</span> exception_handler <span style=color:#f92672>(</span> func, *args, **kwargs <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1085, in __call__
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> self.handle_exception <span style=color:#f92672>(</span> exc_val, exc_tb <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1116, in handle_exception
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> self.handle_application_exception <span style=color:#f92672>(</span> exc_val, exc_tb <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1132, in handle_application_exception
+</span></span><span style=display:flex><span>    self._print_conda_exception <span style=color:#f92672>(</span> exc_val, exc_tb <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1136, in _print_conda_exception
+</span></span><span style=display:flex><span>    print_conda_exception <span style=color:#f92672>(</span> exc_val, exc_tb <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/exceptions.py&#34;</span>, line 1059, in print_conda_exception
+</span></span><span style=display:flex><span>    stderrlog.error <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;\n%r\n&#34;</span>, exc_val <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/logging/__init__.py&#34;</span>, line 1475, in error
+</span></span><span style=display:flex><span>    self._log <span style=color:#f92672>(</span> ERROR, msg, args, **kwargs <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/logging/__init__.py&#34;</span>, line 1589, in _log
+</span></span><span style=display:flex><span>    self.handle <span style=color:#f92672>(</span> record <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/logging/__init__.py&#34;</span>, line 1598, in handle
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span> not self.disabled <span style=color:#f92672>)</span> and self.filter <span style=color:#f92672>(</span> record <span style=color:#f92672>)</span> :
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/logging/__init__.py&#34;</span>, line 811, in filter
+</span></span><span style=display:flex><span>    result <span style=color:#f92672>=</span> f.filter <span style=color:#f92672>(</span> record <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/gateways/logging.py&#34;</span>, line 61, in filter
+</span></span><span style=display:flex><span>    record.msg <span style=color:#f92672>=</span> record.msg % new_args
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/__init__.py&#34;</span>, line 132, in __repr__
+</span></span><span style=display:flex><span>    errs.append <span style=color:#f92672>(</span> e.__repr__ <span style=color:#f92672>(</span> <span style=color:#f92672>))</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/__init__.py&#34;</span>, line 71, in __repr__
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#39;%s: %s&#39;</span> % <span style=color:#f92672>(</span> self.__class__.__name__, text_type <span style=color:#f92672>(</span> self <span style=color:#f92672>))</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/home/unclecat4/conda/lib/python3.8/site-packages/conda/__init__.py&#34;</span>, line 90, in __str__
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> text_type <span style=color:#f92672>(</span> self.message % self._kwargs <span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ValueError: unsupported format character <span style=color:#e6db74>&#39;T&#39;</span> <span style=color:#f92672>(</span> 0x54 <span style=color:#f92672>)</span> at index <span style=color:#ae81ff>1921</span>
+</span></span></code></pre></div><p>起先怀疑是源的问题，后来从清华源换到阿里源还是不行，后来我想，可以使用 R 的 <code>install.packages</code> 函数来安装，但是使用该函数时报错：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Error in install.packages <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;BiocManager&#34;</span> <span style=color:#f92672>)</span> :
+</span></span><span style=display:flex><span>  could not find <span style=color:#66d9ef>function</span> <span style=color:#e6db74>&#34;install.packages
+</span></span></span></code></pre></div><p>很纳闷，于是使用 Arch 的包管理器直接安装 R，依旧会报错，这时我注意到，启动 R 的时候，R 会报错：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>During startup - Warning messages:
+</span></span><span style=display:flex><span>1: package 『utils』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span><span style=display:flex><span>2: package 『stats』 in options <span style=color:#f92672>(</span> <span style=color:#e6db74>&#34;defaultPackages&#34;</span> <span style=color:#f92672>)</span> was not found
+</span></span></code></pre></div><p>这时才发现，是系统中缺少 <code>base-devel</code> 包，安装后即解决问题，DEseq2 也可以正常安装了。</p><p>conda 安装的效率一直不高，找到一个工具 mamba 可以加速安装，切换到 base 环境安装：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>conda install mamba -n base -c conda-forge
+</span></span></code></pre></div><p>后面在安装包的时候把 <code>conda install</code> 换成 <code>mamba install</code> 即可，其他命令照旧。</p></div></article></main><div class=comments><p>COMMENTS</p></div><div id=cusdis_thread data-host=https://cusdis.com data-app-id=3b34877a-34f0-4b03-a5f9-8ca25231e4cd data-page-id="Conda 的一些报错" data-page-url=https://yuanj.top/posts/d74gf95jf8/ data-page-title="Conda 的一些报错"></div><script async defer src=/js/cusdis.es.js></script></div></div></div><script async defer src=/js/menu.js></script></body></html>
